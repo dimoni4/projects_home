@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @SessionAttributes("user")
 public class IndexController {
-	@RequestMapping(value = "/index", method = RequestMethod.POST)
+	@RequestMapping(value = "/")
 	protected ModelAndView indexPage(@ModelAttribute User user) throws Exception {
 
 		ModelAndView model = new ModelAndView("index");

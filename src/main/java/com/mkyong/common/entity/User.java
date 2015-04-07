@@ -9,6 +9,12 @@ public class User {
     private int hitpoints;
     private int power;
 
+    public User() {}
+
+    public User(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
