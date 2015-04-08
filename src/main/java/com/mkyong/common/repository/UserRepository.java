@@ -3,6 +3,8 @@ package com.mkyong.common.repository;
 import com.mkyong.common.entity.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by dvetrov on 03/04/15.
  */
@@ -23,5 +25,9 @@ public class UserRepository {
 
     public User getUser(String name) {
         return new User();
+    }
+
+    public List<User> getUserWantingFight() {
+        return null;
     }
 }

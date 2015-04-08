@@ -18,4 +18,9 @@ public class Fight {
         }
         return enemy;
     }
+
+    public Fight addUser(User user) {
+        users.add(user);
+        return this;
+    }
 }

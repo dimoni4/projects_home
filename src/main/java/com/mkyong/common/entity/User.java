@@ -4,7 +4,7 @@ package com.mkyong.common.entity;
  * Created by dvetrov on 03/04/15.
  */
 public class User {
-    private boolean wantFight;
+    private FightStatus fightStatus;
     private String name;
     private int hitpoints;
     private int power;
@@ -40,10 +40,18 @@ public class User {
     }
 
     public boolean isWantFight() {
-        return wantFight;
+        return fightStatus == FightStatus.SEARCH;
     }
 
-    public void setWantFight(boolean wantFight) {
-        this.wantFight = wantFight;
+    public boolean isInFight() {
+        return fightStatus == FightStatus.FIGHT;
+    }
+
+    public FightStatus getFightStatus() {
+        return fightStatus;
+    }
+
+    public void setFightStatus(FightStatus fightStatus) {
+        this.fightStatus = fightStatus;
     }
 }

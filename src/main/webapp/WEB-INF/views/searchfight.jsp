@@ -5,7 +5,7 @@
 	<h1>Searching for fight</h1>
 
 	<div id="container">
-			<form action="fight/search/stop" method="POST">
+			<form action="<c:url value="/fight/search/stop"/>" method="POST">
 				<button type="submit" class="btn btn-default">Отменить поиск боя</button>
 			</form>
 	</div>
