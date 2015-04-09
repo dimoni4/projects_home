@@ -6,6 +6,7 @@ import com.mkyong.common.entity.User;
 import com.mkyong.common.repository.FightRepository;
 import com.mkyong.common.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
@@ -23,23 +24,24 @@ public class FightSchedule {
     @Autowired
     UserRepository userRepository;
 
-    //TODO @Scheduled
+    @Scheduled(cron = "*/60 * * * * *")
     public void startNewFights() {
-        List<User> usersWantFight = userRepository.getUserWantingFight();
-        Collections.shuffle(usersWantFight);
-        for(int i=0; i<usersWantFight.size(); i+=2) {
-            Fight fight = new Fight();
-
-            User user1 = usersWantFight.get(i);
-            user1.setFightStatus(FightStatus.FIGHT);
-            User user2 = usersWantFight.get(i);
-            user2.setFightStatus(FightStatus.FIGHT);
-
-            fight.addUser(user1).addUser(user2);
-            fightRepository.save(fight);
-
-            userRepository.save(user1);
-            userRepository.save(user2);
-        }
+        System.out.println("Start figths!");
+//        List<User> usersWantFight = userRepository.getUserWantingFight();
+//        Collections.shuffle(usersWantFight);
+//        for(int i=0; i<usersWantFight.size(); i+=2) {
+//            Fight fight = new Fight();
+//
+//            User user1 = usersWantFight.get(i);
+//            user1.setFightStatus(FightStatus.FIGHT);
+//            User user2 = usersWantFight.get(i);
+//            user2.setFightStatus(FightStatus.FIGHT);
+//
+//            fight.addUser(user1).addUser(user2);
+//            fightRepository.save(fight);
+//
+//            userRepository.save(user1);
+//            userRepository.save(user2);
+//        }
     }
 }

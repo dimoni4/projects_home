@@ -18,7 +18,7 @@ public class LoginController {
 		return new User();
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login1", method = RequestMethod.GET)
 	protected String loginPage() throws Exception {
 		return "login";
 	}
