@@ -6,6 +6,7 @@
 
 	<div id="container">
 			<form action="<c:url value="/fight/search/stop"/>" method="POST">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<button type="submit" class="btn btn-default">Отменить поиск боя</button>
 			</form>
 	</div>

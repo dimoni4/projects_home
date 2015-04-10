@@ -32,7 +32,8 @@
 </nav>
 <div id="container">
     <div id="login-form">
-        <form action="<c:url value="login"/>" method="POST">
+        <form action="<c:url value='/login' />" method="POST">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email">

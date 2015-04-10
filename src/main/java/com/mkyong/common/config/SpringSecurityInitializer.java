@@ -2,6 +2,4 @@ package com.mkyong.common.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
-public class SpringSecurityInitializer extends AbstractSecurityWebApplicationInitializer {
-    //do nothing
-}
+public class SpringSecurityInitializer extends AbstractSecurityWebApplicationInitializer {}

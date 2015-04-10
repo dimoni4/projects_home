@@ -18,12 +18,12 @@ public class LoginController {
 		return new User();
 	}
 
-	@RequestMapping(value = "/login1", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	protected String loginPage() throws Exception {
 		return "login";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login1", method = RequestMethod.POST)
 	protected ModelAndView processLogin(@RequestParam String email,
 								  @RequestParam String password,
 								  @ModelAttribute User user) throws Exception {
