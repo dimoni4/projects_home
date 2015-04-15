@@ -10,7 +10,6 @@
 	<h1>Index page</h1>
 
 	<h2>${user.email}</h2>
-	<h2>Name: ${name}</h2>
 	<h2>${user.hitpoints}</h2>
 	<h2>${user.power}</h2>
 	<h2>Search fight: ${user.fightStatus}</h2>

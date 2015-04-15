@@ -19,11 +19,15 @@ public class IndexController {
 
 	@RequestMapping(value = {"/", "/index"})
 	protected ModelAndView indexPage(@ModelAttribute User user,  Principal principal) throws Exception {
+		user = userRepository.findByEmail(principal.getName());
 
+		if (user.isInFight()) {
+			ModelAndView model = new ModelAndView("forward:fight");
+			model.addObject("user", user);
+			return model;
+		}
 		ModelAndView model = new ModelAndView("index");
 		model.addObject("user", user);
-		model.addObject("name", principal.getName());
-
 		return model;
 	}
 }

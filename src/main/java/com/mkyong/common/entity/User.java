@@ -22,7 +22,8 @@ public class User implements java.io.Serializable {
     private int hitpoints;
     private int power;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String email) {
         this.email = email;
@@ -33,6 +34,9 @@ public class User implements java.io.Serializable {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.fightStatus = FightStatus.PEACE;
+        this.hitpoints = 100;
+        this.power = 20;
     }
 
     public String getEmail() {
