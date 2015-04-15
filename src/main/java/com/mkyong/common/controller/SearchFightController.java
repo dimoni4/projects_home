@@ -1,6 +1,5 @@
 package com.mkyong.common.controller;
 
-import com.mkyong.common.entity.Fight;
 import com.mkyong.common.entity.FightStatus;
 import com.mkyong.common.entity.User;
 import com.mkyong.common.repository.FightRepository;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @SessionAttributes("user")
@@ -26,7 +24,7 @@ public class SearchFightController {
             user.setFightStatus(FightStatus.SEARCH);
             userRepository.update(user);
         }
-        if (userRepository.getUser(user.getName()).isInFight()) {
+        if (userRepository.findByEmail(user.getEmail()).isInFight()) {
             return "fight";
         }
         return "searchfight";

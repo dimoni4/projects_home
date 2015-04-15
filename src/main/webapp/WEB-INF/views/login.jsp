@@ -35,8 +35,8 @@
         <form action="<c:url value='/login' />" method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                <label for="username">Email</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Email">
             </div>
             <div class="form-group">
                 <label for="password">Пароль</label>

@@ -4,14 +4,14 @@
 <body>
 	<h1>User</h1>
 
-	<h2>${user.name}</h2>
+	<h2>${user.email}</h2>
 	<h2>${user.hitpoints}</h2>
 	<h2>${user.power}</h2>
 	<h2>Search fight: ${user.fightStatus}</h2>
 
 	<h1>Enemy</h1>
 
-	<h2>${enemy.name}</h2>
+	<h2>${enemy.email}</h2>
 	<h2>${enemy.hitpoints}</h2>
 	<h2>${enemy.power}</h2>
 	<h2>Search fight: ${user.fightStatus}</h2>

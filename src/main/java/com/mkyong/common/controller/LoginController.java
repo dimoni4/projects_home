@@ -4,10 +4,6 @@ import com.mkyong.common.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractController;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @SessionAttributes("user")
@@ -23,13 +19,14 @@ public class LoginController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/login1", method = RequestMethod.POST)
-	protected ModelAndView processLogin(@RequestParam String email,
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	protected ModelAndView processLogin(@RequestParam String username,
 								  @RequestParam String password,
 								  @ModelAttribute User user) throws Exception {
 		//TODO some login
+		System.out.println("LOGIN: "+username);
 		ModelAndView mav = new ModelAndView("index");
-		mav.addObject("user", new User(email));
+		mav.addObject("user", new User(username));
 		return mav;
 	}
 

@@ -1,17 +1,10 @@
 package com.mkyong.common.schedule;
 
-import com.mkyong.common.entity.Fight;
-import com.mkyong.common.entity.FightStatus;
-import com.mkyong.common.entity.User;
 import com.mkyong.common.repository.FightRepository;
 import com.mkyong.common.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by dvetrov on 08/04/15.
