@@ -35,6 +35,7 @@ public class FightSchedule {
         Collections.shuffle(usersWantFight);
         for(int i=0; i<usersWantFight.size(); i+=2) {
             Fight fight = new Fight();
+            fightRepository.save(fight);
 
             User user1 = usersWantFight.get(i);
             user1.setFightStatus(FightStatus.FIGHT);
