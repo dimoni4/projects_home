@@ -9,7 +9,11 @@
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<button type="submit" class="btn btn-default">Отменить поиск боя</button>
 			</form>
-	</div>
+			<form action="<c:url value="/fight/search"/>" method="POST">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				<button type="submit" class="btn btn-default">Обновить</button>
+			</form>
+		</div>
 
 </body>
 </html>

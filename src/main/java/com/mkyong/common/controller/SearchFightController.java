@@ -19,7 +19,11 @@ public class SearchFightController {
     FightRepository fightRepository;
 
     @RequestMapping(value = "/fight/search")
-    protected String fightSearchStart(@ModelAttribute User user) throws Exception {
+    protected String fightSearchStart(@ModelAttribute User session) throws Exception {
+        User user = userRepository.findByEmail(session.getEmail());
+        if (user.isInFight()) {
+            return "forward:/fight";
+        }
         if (!user.isWantFight()) {
             user.setFightStatus(FightStatus.SEARCH);
             userRepository.update(user);

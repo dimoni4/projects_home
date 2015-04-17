@@ -22,7 +22,7 @@ public class IndexController {
 		user = userRepository.findByEmail(principal.getName());
 
 		if (user.isInFight()) {
-			ModelAndView model = new ModelAndView("forward:fight");
+			ModelAndView model = new ModelAndView("forward:/fight");
 			model.addObject("user", user);
 			return model;
 		}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <appender name="timing" class="ch.qos.logback.core.FileAppender">
+        <rollingPolicy class="com.privatbank.brtp.support.logs.TimeInternalRollingPolicy">
+            <fileNamePattern>timing/stdout.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>{ DT: "%d{yyyy-MM-dd HH:mm:ss.SSS}", TYPE: "%type", REF: "%ref", SID:"%sid", REMOTE_HOST: "%host"}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <withJansi>true</withJansi>
+        <target>System.out</target>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5level [%thread] %logger - %replace(%msg){'', ''}%n%xEx{20}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="timing" level="DEBUG" additivity="false">
+        <appender-ref ref="timing"/>
+    </logger>
+
+    <logger name="org.springframework" level="ERROR">
+        <appender-ref ref="console" />
+    </logger>
+
+    <logger name="org.hibernate" level="ERROR">
+        <appender-ref ref="console" />
+    </logger>
+
+    <root level="TRACE">
+        <appender-ref ref="console" />
+    </root>
+
+</configuration>

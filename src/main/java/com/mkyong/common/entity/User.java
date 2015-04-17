@@ -4,11 +4,15 @@ import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "account")
-@NamedQuery(name = User.FIND_BY_EMAIL, query = "select a from User a where a.email = :email")
+@Table(name = "user")
+@NamedQueries ({
+        @NamedQuery (name = User.FIND_BY_EMAIL, query = "select a from User a where a.email = :email"),
+        @NamedQuery(name = User.FIND_BY_FIGHT_STATUS, query = "select a from User a where a.fightStatus = :fightStatus")
+})
 public class User implements java.io.Serializable {
 
-    public static final String FIND_BY_EMAIL = "Account.findByEmail";
+    public static final String FIND_BY_EMAIL = "User.findByEmail";
+    public static final String FIND_BY_FIGHT_STATUS = "User.fightStatus";
 
     @Id
     @GeneratedValue
@@ -17,10 +21,13 @@ public class User implements java.io.Serializable {
     @Column(unique = true)
     private String email;
     private String password;
-    private String role = "ROLE_USER";
+    private String role;
     private FightStatus fightStatus;
     private int hitpoints;
     private int power;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Fight fight;
 
     public User() {
     }
@@ -30,13 +37,13 @@ public class User implements java.io.Serializable {
     }
 
 
-    public User(String email, String password, String role) {
+    public User(String email, String password, String role, FightStatus fightStatus, int hitpoints, int power) {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.fightStatus = FightStatus.PEACE;
-        this.hitpoints = 100;
-        this.power = 20;
+        this.fightStatus = fightStatus;
+        this.hitpoints = hitpoints;
+        this.power = power;
     }
 
     public String getEmail() {
@@ -93,5 +100,21 @@ public class User implements java.io.Serializable {
 
     public void setFightStatus(FightStatus fightStatus) {
         this.fightStatus = fightStatus;
+    }
+
+    public Fight getFight() {
+        return fight;
+    }
+
+    public void setFight(Fight fight) {
+        this.fight = fight;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

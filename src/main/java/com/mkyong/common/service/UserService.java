@@ -4,6 +4,7 @@ import java.util.Collections;
 
 import javax.annotation.PostConstruct;
 
+import com.mkyong.common.entity.FightStatus;
 import com.mkyong.common.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,8 +20,9 @@ public class UserService implements UserDetailsService {
 
     @PostConstruct
     protected void initialize() {
-        userRepository.save(new com.mkyong.common.entity.User("vetrovs@ua.fm", "123", "ROLE_USER"));
-        userRepository.save(new com.mkyong.common.entity.User("admin", "admin", "ROLE_ADMIN"));
+        userRepository.save(new com.mkyong.common.entity.User("vetrovs@ua.fm", "123", "ROLE_USER", FightStatus.PEACE, 100, 20));
+        userRepository.save(new com.mkyong.common.entity.User("admin", "admin", "ROLE_ADMIN", FightStatus.PEACE, 110, 15));
+        userRepository.save(new com.mkyong.common.entity.User("bot", "bot", "ROLE_USER", FightStatus.SEARCH, 20, 10));
     }
 
     @Override
