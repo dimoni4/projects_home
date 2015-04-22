@@ -28,29 +28,30 @@ public class FightSchedule {
     @Autowired
     UserRepository userRepository;
 
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(fixedDelay = 10000)
     public void startNewFights() {
         logger.error("START");
         List<User> usersWantFight = userRepository.getUserWantingFight();
         Collections.shuffle(usersWantFight);
-        for(int i=0; i<usersWantFight.size(); i+=2) {
-            Fight fight = new Fight();
-            fightRepository.save(fight);
+        int usersCount = usersWantFight.size();
+        if (usersCount > 1) {
+            for (int i = 0; i < usersCount; i += 2) {
+                Fight fight = new Fight();
+                fightRepository.save(fight);
 
-            User user1 = usersWantFight.get(i);
-            user1.setFightStatus(FightStatus.FIGHT);
-            user1.setFight(fight);
-            userRepository.save(user1);
+                User user1 = usersWantFight.get(i);
+                user1.setFightStatus(FightStatus.FIGHT);
+                user1.setFight(fight);
+                userRepository.save(user1);
 
-            User user2 = usersWantFight.get(i+1);
-            user2.setFightStatus(FightStatus.FIGHT);
-            user2.setFight(fight);
-            userRepository.save(user2);
+                User user2 = usersWantFight.get(i + 1);
+                user2.setFightStatus(FightStatus.FIGHT);
+                user2.setFight(fight);
+                userRepository.save(user2);
 
-            fight.addUser(user1).addUser(user2);
-            fightRepository.save(fight);
+                fight.addUser(user1).addUser(user2);
+                fightRepository.save(fight);
+            }
         }
-
-
     }
 }

@@ -26,7 +26,7 @@ public class User implements java.io.Serializable {
     private int hitpoints;
     private int power;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Fight fight;
 
     public User() {

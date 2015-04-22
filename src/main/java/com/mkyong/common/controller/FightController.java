@@ -28,7 +28,7 @@ public class FightController {
 
 		ModelAndView model = new ModelAndView("fight");
 		model.addObject("user", user);
-		model.addObject("enemy", user);
+		model.addObject("enemy", fight.getEnemy(user));
 		model.addObject("fight", fight);
 
 		return model;

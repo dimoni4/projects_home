@@ -19,7 +19,7 @@ public class Fight {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fight")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "fight")
     private List<User> users;
 
     public Fight() {
