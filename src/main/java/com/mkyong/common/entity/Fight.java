@@ -22,6 +22,9 @@ public class Fight {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "fight")
     private List<User> users;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Action> actions;
+
     public Fight() {
         this.users = new ArrayList<User>();
     }

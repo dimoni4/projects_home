@@ -34,4 +34,17 @@ public class FightController {
 		return model;
 	}
 
+	@RequestMapping(value = "/fight/action")
+	protected ModelAndView fightAction(@ModelAttribute User session) throws Exception {
+		User user = userRepository.findByEmail(session.getEmail());
+		Fight fight = user.getFight();
+
+		ModelAndView model = new ModelAndView("fight");
+		model.addObject("user", user);
+		model.addObject("enemy", fight.getEnemy(user));
+		model.addObject("fight", fight);
+
+		return model;
+	}
+
 }
