@@ -20,7 +20,9 @@ public class UserService implements UserDetailsService {
     @PostConstruct
     protected void initialize() {
         userRepository.save(new com.mkyong.common.entity.User("vetrovs@ua.fm", "123", "ROLE_USER"));
+        userRepository.save(new com.mkyong.common.entity.User("ilshyma", "123", "ROLE_USER"));
         userRepository.save(new com.mkyong.common.entity.User("admin", "admin", "ROLE_ADMIN"));
+
     }
 
     @Override

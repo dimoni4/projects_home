@@ -57,7 +57,7 @@
 
 
 </body>
-<link href="<c:url value="/resources/js/main.js.txt"/>" rel="script">
+<link href="<c:url value="/resources/js/main.js"/>" rel="script">
 <link href="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"/>" rel="script">
 </html>
 
