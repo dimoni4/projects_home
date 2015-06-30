@@ -2,15 +2,12 @@ package com.mkyong.common.repository;
 
 import javax.persistence.*;
 
-import com.mkyong.common.entity.FightStatus;
 import com.mkyong.common.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.LinkedList;
-import java.util.List;
 
 @Repository
 public class UserRepository {
@@ -56,17 +53,6 @@ public class UserRepository {
                     .getSingleResult();
         } catch (PersistenceException e) {
             return null;
-        }
-    }
-
-    @Transactional(readOnly = true)
-    public List<User> getUserWantingFight() {
-        try {
-            return entityManager.createNamedQuery(User.FIND_BY_FIGHT_STATUS, User.class)
-                    .setParameter("fightStatus", FightStatus.SEARCH)
-                    .getResultList();
-        } catch (PersistenceException e) {
-            return new LinkedList<User>();
         }
     }
 }

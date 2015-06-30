@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SpringMVC.iml" filepath="$PROJECT_DIR$/SpringMVC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thegame.iml" filepath="$PROJECT_DIR$/thegame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projects.home.iml" filepath="$PROJECT_DIR$/projects.home.iml" />
     </modules>
   </component>
 </project>
