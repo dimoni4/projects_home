@@ -48,7 +48,7 @@
 	</ul>
 </menu>
 <header id="top">
-	<span id="header">Welcome!</span>
+	<span id="header">Welcome, ${user.email}!</span>
 </header>
 <section id="content">
 	Check category in menu!
@@ -60,10 +60,3 @@
 <link href="<c:url value="/resources/js/main.js"/>" rel="script">
 <link href="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"/>" rel="script">
 </html>
-
-<!--
-	<h1>Index page</h1>
-	<h2>${user.email}</h2>
-</body>
-</html>
--->
