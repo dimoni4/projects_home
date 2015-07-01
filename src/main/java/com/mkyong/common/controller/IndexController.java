@@ -14,6 +14,11 @@ import java.security.Principal;
 @Controller
 @SessionAttributes("user")
 public class IndexController {
+	@ModelAttribute("user")
+	public User populateForm() {
+		return new User();
+	}
+
 	@Autowired
 	UserRepository userRepository;
 
