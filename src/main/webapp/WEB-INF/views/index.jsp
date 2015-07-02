@@ -9,11 +9,13 @@
 </head>
 
 <body>
-
+<!--
 <form action="<c:url value="/logout"/>" method="post" id="logoutForm">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <button type="submit" class="btn btn-default">Выйти</button>
 </form>
+-->
+
 
 <menu id="menuLeft">
     <ul class="ulxL">
