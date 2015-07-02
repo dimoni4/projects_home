@@ -66,6 +66,6 @@
 </section>
 
 </body>
-<link href="<c:url value="/resources/js/main.js"/>" rel="script">
-<link href="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"/>" rel="script">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="<c:url value="/resources/js/main.js"/>"></script>
 </html>
