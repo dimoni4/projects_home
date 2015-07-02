@@ -18,6 +18,7 @@ public class Project implements java.io.Serializable {
     private String name;
     private String url;
     private String description;
+    private boolean active;
 
     public Long getId() {
         return id;
@@ -48,5 +49,13 @@ public class Project implements java.io.Serializable {
     public Project setDescription(String description) {
         this.description = description;
         return this;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

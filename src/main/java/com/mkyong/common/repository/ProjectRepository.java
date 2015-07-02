@@ -30,6 +30,12 @@ public class ProjectRepository {
         }
     }
 
+    @Transactional
+    public void delete(Project project) {
+        project.setActive(false);
+        save(project);
+    }
+
     @Transactional(readOnly = true)
     public Project getProject(int id) {
         return entityManager.find(Project.class, id);

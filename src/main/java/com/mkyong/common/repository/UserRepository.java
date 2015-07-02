@@ -41,7 +41,7 @@ public class UserRepository {
     }
 
     @Transactional(readOnly = true)
-    public User getUser(int id) {
+    public User getUser(long id) {
         return entityManager.find(User.class, id);
     }
 
