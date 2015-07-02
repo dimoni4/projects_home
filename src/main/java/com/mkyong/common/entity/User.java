@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "user")
+@Table(name = "USER")
 @NamedQueries ({
         @NamedQuery (name = User.FIND_BY_EMAIL, query = "select a from User a where a.email = :email")
 })

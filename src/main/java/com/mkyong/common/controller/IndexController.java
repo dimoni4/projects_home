@@ -1,6 +1,7 @@
 package com.mkyong.common.controller;
 
 import com.mkyong.common.entity.User;
+import com.mkyong.common.repository.ProjectRepository;
 import com.mkyong.common.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,11 +23,15 @@ public class IndexController {
 	@Autowired
 	UserRepository userRepository;
 
+	@Autowired
+	ProjectRepository projectRepository;
+
 	@RequestMapping(value = {"/", "/index"})
 	protected ModelAndView indexPage(@ModelAttribute User user,  Principal principal) throws Exception {
 		user = userRepository.findByEmail(principal.getName());
 		ModelAndView model = new ModelAndView("index");
 		model.addObject("user", user);
+		model.addObject("projects", projectRepository.getAllProjects());
 		return model;
 	}
 }

@@ -9,14 +9,16 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
 @EnableWebSecurity
-@EnableScheduling
 @EnableWebMvcSecurity
+@EnableScheduling
 @Configuration
-@ComponentScan({"com.mkyong.common.config",
+@ComponentScan({
+        "com.mkyong.common.config",
         "com.mkyong.common.controller",
         "com.mkyong.common.repository",
         "com.mkyong.common.entity",
-        "com.mkyong.common.schedule"
+        "com.mkyong.common.schedule",
+        "com.mkyong.common.service"
 })
 public class RootConfig {
 
