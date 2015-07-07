@@ -1,16 +1,15 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<#assign c=JspTaglibs["http://java.sun.com/jsp/jstl/core"]>
 <html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link href="<c:url value="/resources/css/dash.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/foundation-icons/foundation-icons.css"/>" rel="stylesheet">
+    <link href="<@c.url value='/resources/css/dash.css'/>" rel="stylesheet">
+    <link href="<@c.url value='/resources/css/foundation-icons/foundation-icons.css'/>" rel="stylesheet">
 </head>
 
 <body>
 <!--
-<form action="<c:url value="/logout"/>" method="post" id="logoutForm">
+<form action="<@c.url value="/logout"/>" method="post" id="logoutForm">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <button type="submit" class="btn btn-default">Выйти</button>
 </form>
@@ -55,17 +54,16 @@
 <section id="content">
     Check category in menu!
     <table>
-        <c:forEach items="${projects}" var="project">
-            <tr>
-                <td><c:out value="${project.name}"/></td>
-                <td><c:out value="${project.url}"/></td>
-                <td><c:out value="${project.description}"/></td>
-            </tr>
-        </c:forEach>
+    <#list projects as project>
+        <tr>
+            <td>${project.name}</td>
+            <td>${project.url}</td>
+            <td>${project.description}</td>
+        </tr>
+    </#list>
     </table>
 </section>
-
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="<c:url value="/resources/js/main.js"/>"></script>
+<script src="<@c.url value='/resources/js/main.js'/>"></script>
 </html>

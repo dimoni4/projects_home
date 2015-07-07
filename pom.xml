@@ -16,6 +16,8 @@
 		<org.springframework.support.version>2.0.6</org.springframework.support.version>
 		<org.hibernate.version>3.6.8.Final</org.hibernate.version>
 		<logback.version>1.1.1</logback.version>
+		<org.freemarker.version>2.3.20</org.freemarker.version>
+		<freemarker.inheritance.version>0.3</freemarker.inheritance.version>
 	</properties>
 	<dependencies>
 		<!-- logging -->
@@ -282,6 +284,18 @@
 			</exclusions>
 		</dependency>
 
+		<!-- freemarker -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${org.freemarker.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>kr.pe.kwonnam.freemarker</groupId>
+			<artifactId>ftl-inheritance</artifactId>
+			<version>${freemarker.inheritance.version}</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
