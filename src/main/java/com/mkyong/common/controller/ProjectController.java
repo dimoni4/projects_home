@@ -39,11 +39,27 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    protected ModelAndView editProjectPage(@PathVariable final long id,
+    protected ModelAndView editProjectPageProcessor(@PathVariable final long id,
                                            @ModelAttribute final Project project) throws Exception {
         project.setId(id);
         projectRepository.save(project);
         return new ModelAndView("project/show", new HashMap<String, Object>() {{
+            put("project", projectRepository.getProject(project.getId()));
+            put("projects", projectRepository.getAllProjects());
+        }});
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    protected ModelAndView createProjectPage() throws Exception {
+        return new ModelAndView("project/create", new HashMap<String, Object>() {{
+            put("projects", projectRepository.getAllProjects());
+        }});
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    protected ModelAndView createProjectPageProcessor(@ModelAttribute final Project project) throws Exception {
+        return new ModelAndView("project/show", new HashMap<String, Object>() {{
+            projectRepository.save(project);
             put("project", projectRepository.getProject(project.getId()));
             put("projects", projectRepository.getAllProjects());
         }});

@@ -12,12 +12,15 @@
     <ul id="nav-mobile" class="collection side-nav fixed" style="width: 200px;">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo"></a></li>
         <#list projects as project>
-            <li class="bold">
-                    <a href="/project/show/${project.id}" class="waves-effect waves-teal">
-                        ${project.name}
-                    </a>
+            <li>
+                <a href="/project/show/${project.id}" class="waves-effect waves-teal">
+                    ${project.name}
+                </a>
             </li>
         </#list>
+        <li class="logo">
+            <a class="btn-medium waves-effect waves-light" href="<@c.url value='/project/create'/>">Add project</a>
+        </li>
     </ul>
     </@layout.put>
 </@layout.extends>
