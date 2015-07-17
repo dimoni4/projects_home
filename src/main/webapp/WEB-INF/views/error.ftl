@@ -5,9 +5,9 @@
 <@layout.extends name="base.ftl">
     <@layout.put block="title" type="append">: Index</@layout.put>
     <@layout.put block="content" type="replace">
-    <h1>Some error happened!</h1>
+    <p>Some error happened!</p>
 
-    <h2>${exception}</h2>
-    <h3>${message}</h3>
+    <p>${exception}</p>
+    <p>${message}</p>
     </@layout.put>
 </@layout.extends>

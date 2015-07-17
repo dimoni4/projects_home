@@ -17,29 +17,30 @@
         var $resourcesRoot = "<@c.url value="/resources/" />";
     </script>
 
-    <@layout.block name="css_head">
-        <link type="text/css" rel="stylesheet" href="<@c.url value="/resources/css/materialize.min.css" />" media="screen,projection"/>
-        <link type="text/css" rel="stylesheet" href="<@c.url value="/resources/css/main.css" />" media="screen,projection"/>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    </@layout.block>
+<@layout.block name="css_head">
+    <link type="text/css" rel="stylesheet" href="<@c.url value="/resources/css/materialize.min.css" />"
+          media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@c.url value="/resources/css/main.css" />" media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</@layout.block>
 
-    <@layout.block name="js_head">
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="<@c.url value="/resources/js/materialize.min.js" />"></script>
-        <script type="text/javascript" src="<@c.url value="/resources/js/app.js" />"></script>
-        <!--[if lt IE 9]>
-        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-    </@layout.block>
+<@layout.block name="js_head">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="<@c.url value="/resources/js/materialize.min.js" />"></script>
+    <script type="text/javascript" src="<@c.url value="/resources/js/app.js" />"></script>
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</@layout.block>
 </head>
 <body>
-    <@layout.block name="body">
-        <header>
-            <@layout.block name="menu"></@layout.block>
-        </header>
-        <div class="container">
-            <@layout.block name="content"></@layout.block>
-        </div>
-    </@layout.block>
+<@layout.block name="body">
+<header>
+    <@layout.block name="menu"></@layout.block>
+</header>
+<main>
+    <@layout.block name="content"></@layout.block>
+</main>
+</@layout.block>
 </body>
 </html>

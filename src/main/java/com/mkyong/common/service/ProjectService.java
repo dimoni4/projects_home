@@ -26,8 +26,8 @@ public class ProjectService {
 
     @PostConstruct
     protected void initialize() {
-        projectRepository.save(new Project().setName("Test1").setUrl("http://i.ua").setDescription("раз раз раз"));
-        projectRepository.save(new Project().setName("Test2").setUrl("http://google.com").setDescription("раз раз раз"));
-        projectRepository.save(new Project().setName("Test3").setUrl("http://i.ua").setDescription("раз раз раз"));
+        projectRepository.save(new Project().setName("Test1").setUrl("http://i.ua").setDescription("Best project"));
+        projectRepository.save(new Project().setName("Test2").setUrl("http://google.com").setDescription("Just google"));
+        projectRepository.save(new Project().setName("Test3").setUrl("http://i.ua").setDescription("Email service"));
     }
 }
