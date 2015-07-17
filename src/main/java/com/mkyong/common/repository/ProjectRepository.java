@@ -37,7 +37,7 @@ public class ProjectRepository {
     }
 
     @Transactional(readOnly = true)
-    public Project getProject(int id) {
+    public Project getProject(long id) {
         return entityManager.find(Project.class, id);
     }
 

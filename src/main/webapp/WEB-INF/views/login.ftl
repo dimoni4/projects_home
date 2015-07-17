@@ -1,49 +1,30 @@
 <#assign c=JspTaglibs["http://java.sun.com/jsp/jstl/core"]>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link href="<@c.url value="/resources/css/lib/bootstrap.min.css"/>" rel="stylesheet">
-    <link href="<@c.url value="/resources/css/login.css"/>" rel="stylesheet">
-</head>
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-</nav>
-<div id="container">
-    <div id="login-form">
-        <form action="<@c.url value='/login' />" method="POST">
+<#assign form=JspTaglibs["http://www.springframework.org/tags/form"]>
+<#assign s=JspTaglibs["http://www.springframework.org/tags"]>
+
+
+<@layout.extends name="base.ftl">
+    <@layout.put block="body" type="replace">
+    <div class="row">
+        <form class="col offset-m4 m4" action="<@c.url value='/login' />" method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <div class="form-group">
-                <label for="username">Email</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Email">
+
+            <div class="row">
+                <div class="input-field ">
+                    <input id="username" type="email" name="username" class="validate">
+                    <label for="username">Email</label>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Пароль</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Пароль">
+            <div class="row">
+                <div class="input-field">
+                    <input id="password" type="password" name="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
             </div>
-            <button type="submit" class="btn btn-default">Войти</button>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Enter
+                <i class="mdi-content-send right"></i>
+            </button>
         </form>
     </div>
-</div>
-</body>
-</html>
+    </@layout.put>
+</@layout.extends>

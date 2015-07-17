@@ -11,33 +11,35 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping(value = "/project")
 public class ProjectController {
-	@Autowired
-	private UserSession userSession;
+    @Autowired
+    private UserSession userSession;
 
-	@Autowired
-	ProjectRepository projectRepository;
+    @Autowired
+    ProjectRepository projectRepository;
 
-	@RequestMapping(method = RequestMethod.GET)
-	@ResponseBody
-	protected Project getProject(int projectId) throws Exception {
-		return projectRepository.getProject(projectId);
-	}
+    @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
+    protected ModelAndView getProjectPage(@PathVariable final long id) throws Exception {
+        return new ModelAndView("project/show", new HashMap<String, Object>() {{
+            put("project", projectRepository.getProject(id));
+        }});
+    }
 
-	@RequestMapping(method = RequestMethod.POST)
-	@ResponseBody
-	protected String saveProject(Project project) throws Exception {
-		projectRepository.save(project);
-		return "ok";
-	}
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    protected String saveProject(Project project) throws Exception {
+        projectRepository.save(project);
+        return "ok";
+    }
 
-	@RequestMapping(method = RequestMethod.DELETE)
-	@ResponseBody
-	protected String deleteProject(Project project) throws Exception {
-		projectRepository.delete(project);
-		return "ok";
-	}
+    @RequestMapping(method = RequestMethod.DELETE)
+    @ResponseBody
+    protected String deleteProject(Project project) throws Exception {
+        projectRepository.delete(project);
+        return "ok";
+    }
 }

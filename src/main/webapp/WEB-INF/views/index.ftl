@@ -1,69 +1,40 @@
 <#assign c=JspTaglibs["http://java.sun.com/jsp/jstl/core"]>
-<html>
+<#assign form=JspTaglibs["http://www.springframework.org/tags/form"]>
+<#assign s=JspTaglibs["http://www.springframework.org/tags"]>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link href="<@c.url value='/resources/css/dash.css'/>" rel="stylesheet">
-    <link href="<@c.url value='/resources/css/foundation-icons/foundation-icons.css'/>" rel="stylesheet">
-</head>
+<@layout.extends name="base.ftl">
+    <@layout.put block="title" type="append">: Index</@layout.put>
 
-<body>
-<!--
-<form action="<@c.url value="/logout"/>" method="post" id="logoutForm">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <button type="submit" class="btn btn-default">Выйти</button>
-</form>
--->
-
-
-<menu id="menuLeft">
-    <ul class="ulxL">
-        <li class="li-main">
-            <div class="menu-icon">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-            </div>
-        </li>
-        <li class="li-main">
-            <div class="menu-item">
-                <a href="#" id="dashboard">
-                    <i class="icon fi-graph-pie" id="i-dash"></i>
-                </a>
-            </div>
-        </li>
-        <li class="li-main">
-            <div class="menu-item">
-                <a href="#" id="projects">
-                    <i class="icon fi-paypal" id="i-projects"></i>
-                </a>
-            </div>
-        </li>
-        <li class="li-main">
-            <div class="menu-item ">
-                <a href="#" id="settings">
-                    <i class="icon fi-wrench" id="i-settings"></i>
-                </a>
-            </div>
-        </li>
+    <@layout.put block="menu" type="replace">
+    <div class="container"><a href="#" data-activates="nav-mobile"
+                              class="button-collapse top-nav full hide-on-large-only"><i
+            class="mdi-navigation-menu"></i></a></div>
+    <ul id="nav-mobile" class="side-nav fixed" style="width: 200px;">
+        <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo"></a></li>
+        <#list projects as project>
+            <li class="bold"><a href="project/show/${project.id}" class="waves-effect waves-teal">${project.name}</a></li>
+        </#list>
     </ul>
-</menu>
-<header id="top">
-    <span id="header">Welcome, ${user.email}!</span>
-</header>
-<section id="content">
-    Check category in menu!
-    <table>
-    <#list projects as project>
-        <tr>
-            <td>${project.name}</td>
-            <td>${project.url}</td>
-            <td>${project.description}</td>
-        </tr>
-    </#list>
-    </table>
-</section>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="<@c.url value='/resources/js/main.js'/>"></script>
-</html>
+    </@layout.put>
+
+    <@layout.put block="content" type="replace">
+    <main>
+        <table class="responsive-table striped">
+            <thead>
+            <tr>
+                <th data-field="name">Name</th>
+                <th data-field="url">Url</th>
+                <th data-field="description">Description</th>
+            </tr>
+            </thead>
+            <#list projects as project>
+                <tr>
+                    <td>${project.name}</td>
+                    <td>${project.url}</td>
+                    <td>${project.description}</td>
+                </tr>
+            </#list>
+        </table>
+    </main>
+    </@layout.put>
+</@layout.extends>
