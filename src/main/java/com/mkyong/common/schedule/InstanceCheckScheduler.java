@@ -19,7 +19,7 @@ public class InstanceCheckScheduler {
     @Scheduled(fixedDelay = 60000)
     public void checkInstances() {
         logger.warn("checkInstances: START");
-        instanceCheckService.checkInstances();
+        //instanceCheckService.checkInstances();
         logger.warn("checkInstances: STOP");
     }
 }
