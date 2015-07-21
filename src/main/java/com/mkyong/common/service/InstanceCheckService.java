@@ -17,6 +17,9 @@ public class InstanceCheckService {
     @Autowired
     private ProjectRepository projectRepository;
 
+    @Autowired
+    private EmailSenderService emailSenderService;
+
     public void checkInstances() {
         for (Project project : projectRepository.getAllProjects()) {
             String url = project.getUrl();
@@ -42,6 +45,8 @@ public class InstanceCheckService {
                 in.close();
 
                 System.out.println(response.toString());
+
+                emailSenderService.send(project.getAuthor().getEmail(), "Проект "+project.getName(), "Проект не работает");
             } catch (IOException e) {
                 e.printStackTrace();
             }

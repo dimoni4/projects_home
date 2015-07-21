@@ -17,14 +17,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    @PostConstruct
-    protected void initialize() {
-        userRepository.save(new com.mkyong.common.entity.User("vetrovs@ua.fm", "123", "ROLE_USER"));
-        userRepository.save(new com.mkyong.common.entity.User("ilshyma", "123", "ROLE_USER"));
-        userRepository.save(new com.mkyong.common.entity.User("admin", "admin", "ROLE_ADMIN"));
-
-    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         com.mkyong.common.entity.User user = userRepository.findByEmail(username);

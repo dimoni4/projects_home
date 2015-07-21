@@ -15,6 +15,9 @@ public class Project implements java.io.Serializable {
     @GeneratedValue
     private Long id;
 
+    @OneToOne
+    @JoinColumn
+    private User author;
     private String name;
     private String url;
     private String description;
@@ -61,5 +64,14 @@ public class Project implements java.io.Serializable {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public Project setAuthor(User author) {
+        this.author = author;
+        return this;
     }
 }
