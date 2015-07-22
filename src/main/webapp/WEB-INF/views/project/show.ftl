@@ -18,12 +18,6 @@
             </div>
             <div class="row">
                 <div class="input-field ">
-                    <input id="url" type="text" name="url" class="validate" value="${project.url}" disabled>
-                    <label for="url">Url</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field ">
                     <input id="description" type="text" name="description" class="validate" value="${project.description}" disabled>
                     <label for="description">Description</label>
                 </div>

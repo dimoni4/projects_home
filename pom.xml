@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.mkyong.common</groupId>
-    <artifactId>projects.home</artifactId>
+    <groupId>com.project</groupId>
+    <artifactId>home</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Projects Home</name>
@@ -14,7 +14,7 @@
         <org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
         <org.springframework.data.version>1.1.0.RELEASE</org.springframework.data.version>
         <org.springframework.support.version>2.0.6</org.springframework.support.version>
-        <org.hibernate.version>3.6.8.Final</org.hibernate.version>
+        <org.hibernate.version>5.0.0.CR2</org.hibernate.version>
         <logback.version>1.1.1</logback.version>
         <org.freemarker.version>2.3.20</org.freemarker.version>
         <freemarker.inheritance.version>0.3</freemarker.inheritance.version>
@@ -259,33 +259,6 @@
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
             <scope>provided</scope>
-        </dependency>
-
-        <!-- logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- freemarker -->

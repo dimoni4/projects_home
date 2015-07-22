@@ -17,7 +17,6 @@
             <#list projects as project>
                 <tr>
                     <td>${project.name}</td>
-                    <td>${project.url}</td>
                     <td>${project.description}</td>
                 </tr>
             </#list>

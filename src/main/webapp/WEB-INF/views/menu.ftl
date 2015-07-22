@@ -10,7 +10,7 @@
                               class="button-collapse top-nav full hide-on-large-only"><i
             class="mdi-navigation-menu"></i></a></div>
     <ul id="nav-mobile" class="collection side-nav fixed" style="width: 200px;">
-        <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo"></a></li>
+        <li class="logo"><a id="logo-container" href="<@c.url value='/index'/>" class="brand-logo"></a></li>
         <#list projects as project>
             <li>
                 <a href="/project/show/${project.id}" class="waves-effect waves-teal">
