@@ -14,7 +14,6 @@ public class Project implements java.io.Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "artist_id")
     private Long id;
 
     private String name;

@@ -13,7 +13,6 @@ public class ProjectAccess implements java.io.Serializable {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "artist_id")
     private Project project;
 
     private com.project.home.entity.AccessType accessType;
