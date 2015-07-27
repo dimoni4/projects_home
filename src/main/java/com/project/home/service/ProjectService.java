@@ -39,7 +39,12 @@ public class ProjectService {
                                 .setStatus(Status.OK)
                                 .setType(InstanceType.PRODUCTION)
                                 .setDescription("trlolo")
-                                .setProject(testProject))
+                                .setProject(testProject)
+                                .setVersion("1.1"))
+                        .setJenkinsStatus(Status.NE_OK)
+                        .setJenkinsUrl("http://jenkins.ua")
+                        .setSonarStatus(Status.NE_OK)
+                        .setSonarUrl("http://jenkins.ua")
         );
     }
 }
