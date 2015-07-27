@@ -11,7 +11,7 @@ public class Instance implements java.io.Serializable {
     private Long id;
 
     private String description;
-    private InstanceType type;
+    private Type type;
     private String url;
     private String version;
     private CheckCreteria checkCreteria;
@@ -19,6 +19,11 @@ public class Instance implements java.io.Serializable {
 
     @ManyToOne
     private Project project;
+
+    public enum Type {
+        TEST, STAGE, PRODUCTION
+    }
+
 
     public Long getId() {
         return id;
@@ -38,11 +43,11 @@ public class Instance implements java.io.Serializable {
         return this;
     }
 
-    public InstanceType getType() {
+    public Type getType() {
         return type;
     }
 
-    public Instance setType(InstanceType type) {
+    public Instance setType(Type type) {
         this.type = type;
         return this;
     }

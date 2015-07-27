@@ -19,24 +19,15 @@ public class Project implements java.io.Serializable {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "project")
-    private Set<ProjectAccess> projectAccessList = new HashSet<ProjectAccess>();
+    private Set<Access> accessList = new HashSet<Access>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "project")
-    private Set<Instance> projectInstances = new HashSet<Instance>();
+    private Set<Instance> instances = new HashSet<Instance>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "project")
+    private Set<Service> services = new HashSet<Service>();
 
     private String description;
-
-    /* URLS */
-    private String jenkinsUrl;
-    private String repositoryUrl;
-    private String logsUrl;
-    private String sonarUrl;
-
-    /* STATUSES */
-    private Status jenkinsStatus;
-
-    private Status sonarStatus;
-
 
     private boolean active;
 
@@ -74,88 +65,39 @@ public class Project implements java.io.Serializable {
         this.active = active;
     }
 
-    public String getJenkinsUrl() {
-        return jenkinsUrl;
-    }
-
-    public Project setJenkinsUrl(String jenkinsUrl) {
-        this.jenkinsUrl = jenkinsUrl;
+    public Project add(Access acess) {
+        accessList.add(acess);
         return this;
     }
 
-    public String getRepositoryUrl() {
-        return repositoryUrl;
-    }
-
-    public Project setRepositoryUrl(String repositoryUrl) {
-        this.repositoryUrl = repositoryUrl;
-        return this;
-    }
-
-    public String getLogsUrl() {
-        return logsUrl;
-    }
-
-    public Project setLogsUrl(String logsUrl) {
-        this.logsUrl = logsUrl;
-        return this;
-    }
-
-    public String getSonarUrl() {
-        return sonarUrl;
-    }
-
-    public Project setSonarUrl(String sonarUrl) {
-        this.sonarUrl = sonarUrl;
-        return this;
-    }
-
-    public Status getJenkinsStatus() {
-        return jenkinsStatus;
-    }
-
-    public Project setJenkinsStatus(Status jenkinsStatus) {
-        this.jenkinsStatus = jenkinsStatus;
-        return this;
-    }
-
-    public Status getSonarStatus() {
-        return sonarStatus;
-    }
-
-    public Project setSonarStatus(Status sonarStatus) {
-        this.sonarStatus = sonarStatus;
-        return this;
-    }
-
-    public Project add(ProjectAccess projectAccess) {
-        projectAccessList.add(projectAccess);
-        return this;
-    }
-
-    public Set<ProjectAccess> getProjectAccessList() {
-        return new HashSet<ProjectAccess>(projectAccessList);
+    public Set<Access> getProjectAccessList() {
+        return new HashSet<Access>(accessList);
     }
 
     public Project add(Instance instance) {
-        projectInstances.add(instance);
+        instances.add(instance);
         return this;
     }
 
     public Set<Instance> getProjectInstances() {
-        return new HashSet<Instance>(projectInstances);
+        return new HashSet<Instance>(instances);
+    }
+
+    public Project add(Service service) {
+        services.add(service);
+        return this;
+    }
+
+    public Set<Service> getServices() {
+        return new HashSet<Service>(services);
     }
 
     public User getOwner() {
-        for (ProjectAccess projectAccess: projectAccessList) {
-            if(AccessType.OWNER.equals(projectAccess.getAccessType())) {
+        for (Access projectAccess: accessList) {
+            if(Access.Type.OWNER.equals(projectAccess.getAccessType())) {
                 return projectAccess.getUser();
             }
         }
         return null;
-    }
-
-    public void setProjectAccessList(Set<ProjectAccess> projectAccessList) {
-        this.projectAccessList = projectAccessList;
     }
 }

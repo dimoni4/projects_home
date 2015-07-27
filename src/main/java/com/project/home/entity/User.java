@@ -24,7 +24,7 @@ public class User implements java.io.Serializable {
     private String role;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
-    private Set<ProjectAccess> projectAccessList = new HashSet<ProjectAccess>();
+    private Set<Access> projectAccessList = new HashSet<Access>();
 
     public User() {
     }
@@ -72,12 +72,12 @@ public class User implements java.io.Serializable {
         this.id = id;
     }
 
-    public User add(ProjectAccess projectAccess) {
+    public User add(Access projectAccess) {
         projectAccessList.add(projectAccess);
         return this;
     }
 
-    public Set<ProjectAccess> getProjectAccessList() {
-        return new HashSet<ProjectAccess>(projectAccessList);
+    public Set<Access> getProjectAccessList() {
+        return new HashSet<Access>(projectAccessList);
     }
 }

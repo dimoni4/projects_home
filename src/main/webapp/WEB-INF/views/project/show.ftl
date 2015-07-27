@@ -14,7 +14,7 @@
             <ul class="tabs">
                 <li class="tab col s3"><a class="active" href="#test1">Dashboard</a></li>
                 <li class="tab col s3"><a href="#test2">Info</a></li>
-                <li class="tab col s3"><a href="#test3">Instancesb</a></li>
+                <li class="tab col s3"><a href="#test3">Instances</a></li>
             </ul>
         </div>
         <div class="row" id="test1">
@@ -22,21 +22,18 @@
                 <table class="responsive-table striped">
                     <thead>
                     <tr>
-                        <th data-field="service">Service</th>
+                        <#--<th data-field="service">Service</th>-->
                         <th data-field="status">Status</th>
                         <th data-field="url">Url</th>
                     </tr>
                     </thead>
-                    <tr>
-                        <td>Jenkins</td>
-                        <td>${project.jenkinsStatus}</td>
-                        <td>${project.jenkinsUrl}</td>
-                    </tr>
-                    <tr>
-                        <td>Sonar</td>
-                        <td>${project.sonarStatus}</td>
-                        <td>${project.sonarUrl}</td>
-                    </tr>
+
+                    <#list project.services as service>
+                        <tr>
+                            <td>${service.status}</td>
+                            <td>${service.url}</td>
+                        </tr>
+                    </#list>
                 </table>
             </div>
             <div class="col s8 left-align">
@@ -79,7 +76,7 @@
                     <th data-field="version">Version</th>
                 </tr>
                 </thead>
-                <#list project.projectInstances as instance>
+                <#list project.instances as instance>
                     <tr>
                         <td>${instance.status}</td>
                         <td>${instance.url}</td>

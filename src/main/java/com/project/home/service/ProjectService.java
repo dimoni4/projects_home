@@ -4,11 +4,10 @@ import com.project.home.repository.ProjectRepository;
 import com.project.home.repository.UserRepository;
 import com.project.home.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
-@Service
+@org.springframework.stereotype.Service
 public class ProjectService {
 
     @Autowired
@@ -29,22 +28,26 @@ public class ProjectService {
                 testProject
                         .setName("Test1")
                         .setDescription("Best project")
-                        .add(new ProjectAccess(
+                        .add(new Access(
                                 vetrov,
                                 testProject,
-                                AccessType.OWNER))
+                                Access.Type.OWNER))
                         .add(new Instance()
                                 .setUrl("http://google.com")
                                 .setCheckCreteria(CheckCreteria.SEARCH_WORD.setValue("google"))
                                 .setStatus(Status.OK)
-                                .setType(InstanceType.PRODUCTION)
+                                .setType(Instance.Type.PRODUCTION)
                                 .setDescription("trlolo")
                                 .setProject(testProject)
                                 .setVersion("1.1"))
-                        .setJenkinsStatus(Status.NE_OK)
-                        .setJenkinsUrl("http://jenkins.ua")
-                        .setSonarStatus(Status.NE_OK)
-                        .setSonarUrl("http://jenkins.ua")
+                        .add(new Service()
+                                .setType(Service.Type.JENKINS)
+                                .setUrl("i.ua")
+                                .setStatus(Status.OK))
+//                        .setJenkinsStatus(Status.NE_OK)
+//                        .setJenkinsUrl("http://jenkins.ua")
+//                        .setSonarStatus(Status.NE_OK)
+//                        .setSonarUrl("http://jenkins.ua")
         );
     }
 }

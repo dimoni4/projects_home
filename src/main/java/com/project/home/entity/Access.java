@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PROJECT_ACCESS")
-public class ProjectAccess implements java.io.Serializable {
+public class Access implements java.io.Serializable {
     @Id
     @GeneratedValue
     private Long id;
@@ -15,15 +15,19 @@ public class ProjectAccess implements java.io.Serializable {
     @ManyToOne
     private Project project;
 
-    private com.project.home.entity.AccessType accessType;
+    private Type accessType;
 
-    public ProjectAccess(User user, Project project, com.project.home.entity.AccessType accessType) {
+    public Access(User user, Project project, Type accessType) {
         this.user = user;
         this.project = project;
         this.accessType = accessType;
     }
 
-    public ProjectAccess() {
+    public Access() {
+    }
+
+    public static enum Type {
+        OWNER, VISITOR
     }
 
     public Long getId() {
@@ -50,11 +54,11 @@ public class ProjectAccess implements java.io.Serializable {
         this.project = project;
     }
 
-    public com.project.home.entity.AccessType getAccessType() {
+    public Type getAccessType() {
         return accessType;
     }
 
-    public void setAccessType(com.project.home.entity.AccessType accessType) {
+    public void setAccessType(Type accessType) {
         this.accessType = accessType;
     }
 }
