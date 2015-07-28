@@ -21,7 +21,7 @@
                     <label for="description">Description</label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Save
+            <button class="btn waves-effect waves-light blue-grey lighten-1" type="submit" name="action">Save
                 <i class="mdi-content-send right"></i>
             </button>
         </form>

@@ -1,6 +1,8 @@
 package com.project.home.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "INSTANCE")
@@ -14,11 +16,16 @@ public class Instance implements java.io.Serializable {
     private Type type;
     private String url;
     private String version;
-    private CheckCreteria checkCreteria;
     private Status status;
+
+    @Embedded
+    private CheckCreteria checkCreteria;
 
     @ManyToOne
     private Project project;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "instance")
+    private Set<Violation> violations = new HashSet<Violation>();
 
     public enum Type {
         TEST, STAGE, PRODUCTION
@@ -94,6 +101,18 @@ public class Instance implements java.io.Serializable {
 
     public Instance setProject(Project project) {
         this.project = project;
+        return this;
+    }
+
+
+
+    public Set<Violation> getViolations() {
+        return new HashSet<Violation>(violations);
+    }
+
+    public Instance add(Violation violation) {
+        violation.setInstance(this);
+        violations.add(violation);
         return this;
     }
 }

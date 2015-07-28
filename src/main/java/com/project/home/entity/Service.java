@@ -22,8 +22,9 @@ public class Service implements java.io.Serializable {
         return project;
     }
 
-    public void setProject(Project project) {
+    public Service setProject(Project project) {
         this.project = project;
+        return this;
     }
 
     public Type getType() {

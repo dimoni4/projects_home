@@ -12,39 +12,66 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3"><a class="active" href="#test1">Dashboard</a></li>
-                <li class="tab col s3"><a href="#test2">Info</a></li>
-                <li class="tab col s3"><a href="#test3">Instances</a></li>
+                <li class="tab col s3"><a class="active" href="#dashboard">Dashboard</a></li>
+                <li class="tab col s3"><a href="#info">Info</a></li>
+                <li class="tab col s3"><a href="#instances">Instances</a></li>
             </ul>
         </div>
-        <div class="row" id="test1">
-            <div class="col s4 left-align">
+        <div id="dashboard">
+            <div class="row">
+                <div class="col s4 left-align">
+                    <h3>Services</h3>
+                    <table class="responsive-table striped">
+                        <thead>
+                        <tr>
+                        <#--<th data-field="service">Service</th>-->
+                            <th data-field="status">Status</th>
+                            <th data-field="url">Url</th>
+                        </tr>
+                        </thead>
+
+                        <#list project.services as service>
+                            <tr>
+                                <td>${service.status}</td>
+                                <td>${service.url}</td>
+                            </tr>
+                        </#list>
+                    </table>
+                </div>
+                <div class="col s8 left-align">
+                    <h3>Description</h3>
+
+                    <p>
+                    ${project.description}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Violations</h3>
                 <table class="responsive-table striped">
                     <thead>
                     <tr>
-                        <#--<th data-field="service">Service</th>-->
-                        <th data-field="status">Status</th>
+                        <th data-field="service">Instance</th>
+                        <th data-field="datetime">Time</th>
                         <th data-field="url">Url</th>
+                        <th data-field="message">Message</th>
                     </tr>
                     </thead>
 
-                    <#list project.services as service>
-                        <tr>
-                            <td>${service.status}</td>
-                            <td>${service.url}</td>
-                        </tr>
+                    <#list project.instances as instance>
+                        <#list instance.violations as violation>
+                            <tr>
+                                <td>${instance.type}</td>
+                                <td>${violation.dateTime}</td>
+                                <td>${violation.url}</td>
+                                <td>${violation.message}</td>
+                            </tr>
+                        </#list>
                     </#list>
                 </table>
             </div>
-            <div class="col s8 left-align">
-                <h2>Description</h2>
-
-                <p>
-                ${project.description}
-                </p>
-            </div>
         </div>
-        <div id="test2" class="col s12">
+        <div id="info" class="col s12">
             <form class="col m4" action="<@c.url value="/project/edit/${project.id}" />" method="GET">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -61,12 +88,12 @@
                         <label for="description">Description</label>
                     </div>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+                <button class="btn waves-effect waves-light blue-grey lighten-1" type="submit" name="action">Edit
                     <i class="mdi-content-send right"></i>
                 </button>
             </form>
         </div>
-        <div id="test3" class="col s12">
+        <div id="instances" class="col s12">
             <table class="responsive-table striped">
                 <thead>
                 <tr>

@@ -1,19 +1,35 @@
 package com.project.home.entity;
 
+import org.hibernate.annotations.CollectionId;
+
+import javax.persistence.Column;
+
 /**
  * Created by dvetrov on 21/07/15.
  */
-public enum CheckCreteria {
-    SEARCH_WORD, HTTP_RESPONSE_CODE;
+public class CheckCreteria {
+    private String checkWord;
+    private Type chekType;
 
-    private String value;
-
-    public String getValue() {
-        return value;
+    public CheckCreteria() {
     }
 
-    public CheckCreteria setValue(String value) {
-        this.value = value;
-        return this;
+    public CheckCreteria(Type type, String checkWord) {
+        this.chekType = type;
+        this.checkWord = checkWord;
+    }
+
+    public String getCheckWord() {
+        return checkWord;
+    }
+
+    public Type getType() {
+        return chekType;
+    }
+
+    public static enum Type {
+        SEARCH_WORD, HTTP_RESPONSE_CODE;
     }
 }
+
+

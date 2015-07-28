@@ -10,7 +10,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <div class="row">
-                <div class="input-field ">
+                <div class="input-field">
                     <input id="username" type="email" name="username" class="validate">
                     <label for="username">Email</label>
                 </div>
@@ -21,7 +21,7 @@
                     <label for="password">Password</label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Enter
+            <button class="btn waves-effect waves-light blue-grey lighten-1" type="submit" name="action">Enter
                 <i class="mdi-content-send right"></i>
             </button>
         </form>

@@ -66,24 +66,27 @@ public class Project implements java.io.Serializable {
     }
 
     public Project add(Access acess) {
+        acess.setProject(this);
         accessList.add(acess);
         return this;
     }
 
-    public Set<Access> getProjectAccessList() {
+    public Set<Access> getAccessList() {
         return new HashSet<Access>(accessList);
     }
 
     public Project add(Instance instance) {
+        instance.setProject(this);
         instances.add(instance);
         return this;
     }
 
-    public Set<Instance> getProjectInstances() {
+    public Set<Instance> getInstances() {
         return new HashSet<Instance>(instances);
     }
 
     public Project add(Service service) {
+        service.setProject(this);
         services.add(service);
         return this;
     }
