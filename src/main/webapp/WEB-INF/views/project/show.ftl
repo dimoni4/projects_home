@@ -6,6 +6,7 @@
     <@layout.put block="title" type="append">: Index</@layout.put>
     <@layout.put block="js_head" type="append">
     <script type="text/javascript" src="<@c.url value="/resources/js/project/show.js" />"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
     </@layout.put>
 
     <@layout.put block="content" type="replace">
@@ -69,6 +70,9 @@
                         </#list>
                     </#list>
                 </table>
+            </div>
+            <div class="row">
+                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
             </div>
         </div>
         <div id="info" class="col s12">
