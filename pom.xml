@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.project</groupId>
-    <artifactId>home</artifactId>
+    <groupId>com.projects.home</groupId>
+    <artifactId>projects.home</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Projects Home</name>
@@ -10,19 +10,21 @@
         <org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
         <slf4j.version>1.7.2</slf4j.version>
         <logback.version>1.0.9</logback.version>
-        <org.springframework.version>4.1.7.RELEASE</org.springframework.version>
+        <org.springframework.version>4.0.5.RELEASE</org.springframework.version>
         <org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
         <org.springframework.data.version>1.1.0.RELEASE</org.springframework.data.version>
         <org.springframework.support.version>2.0.6</org.springframework.support.version>
         <org.hibernate.version>5.0.0.CR2</org.hibernate.version>
         <logback.version>1.1.1</logback.version>
+        <javax.mail.version>1.5.4</javax.mail.version>
         <org.freemarker.version>2.3.20</org.freemarker.version>
-        <freemarker.inheritance.version>0.3</freemarker.inheritance.version>
+        <freemarker.inheritance.version>0.4.RELEASE</freemarker.inheritance.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
+            <version>${javax.mail.version}</version>
         </dependency>
         <!-- logging -->
         <dependency>
@@ -269,10 +271,10 @@
         </dependency>
         <dependency>
             <groupId>kr.pe.kwonnam.freemarker</groupId>
-            <artifactId>ftl-inheritance</artifactId>
+            <artifactId>freemarker-template-inheritance</artifactId>
             <version>${freemarker.inheritance.version}</version>
-            <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
