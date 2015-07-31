@@ -16,10 +16,8 @@ public class InstanceCheckScheduler {
     @Autowired
     private InstanceCheckService instanceCheckService;
 
-    @Scheduled(fixedDelay = 60000)
+    @Scheduled(fixedRate = 60000)
     public void checkInstances() {
-        logger.warn("checkInstances: START");
         instanceCheckService.checkInstances();
-        logger.warn("checkInstances: STOP");
     }
 }

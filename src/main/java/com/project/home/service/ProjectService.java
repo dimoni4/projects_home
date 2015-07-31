@@ -23,14 +23,15 @@ public class ProjectService {
 
         User vetrov = new User("vetrovs@ua.fm", "123", "ROLE_USER");
         userRepository.save(vetrov);
-        Project testProject = new Project();
+
+
         projectRepository.save(
-                testProject
+                new Project()
                         .setName("Test1")
                         .setDescription("Best project")
+                        .setActive(true)
                         .add(new Access(
                                 vetrov,
-                                testProject,
                                 Access.Type.OWNER))
                         .add(new Instance()
                                 .setUrl("http://google.com")
@@ -48,7 +49,94 @@ public class ProjectService {
                                 .setVersion("1.2"))
                         .add(new Service()
                                 .setType(Service.Type.JENKINS)
-                                .setUrl("i.ua")
+                                .setUrl("http://i.ua")
+                                .setStatus(Status.OK))
+        );
+
+        projectRepository.save(
+                new Project()
+                        .setName("Testw")
+                        .setDescription("Best project")
+                        .setActive(true)
+                        .add(new Access(
+                                vetrov,
+                                Access.Type.OWNER))
+                        .add(new Instance()
+                                .setUrl("http://google.com")
+                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "asdf"))
+                                .setStatus(Status.OK)
+                                .setType(Instance.Type.PRODUCTION)
+                                .setDescription("trlolo")
+                                .setVersion("1.1"))
+                        .add(new Instance()
+                                .setUrl("http://google.com")
+                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "google"))
+                                .setStatus(Status.OK)
+                                .setType(Instance.Type.TEST)
+                                .setDescription("trlolo")
+                                .setVersion("1.2"))
+                        .add(new Service()
+                                .setType(Service.Type.JENKINS)
+                                .setUrl("http://i.ua")
+                                .setStatus(Status.OK))
+        );
+
+        projectRepository.save(
+                new Project()
+                        .setName("Test3")
+                        .setDescription("Best project")
+                        .setActive(true)
+                        .add(new Access(
+                                vetrov,
+                                Access.Type.OWNER))
+                        .add(new Instance()
+                                .setUrl("http://google.com")
+                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "asdf"))
+                                .setStatus(Status.OK)
+                                .setType(Instance.Type.PRODUCTION)
+                                .setDescription("trlolo")
+                                .setVersion("1.1"))
+                        .add(new Instance()
+                                .setUrl("http://google.com")
+                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "google"))
+                                .setStatus(Status.OK)
+                                .setType(Instance.Type.TEST)
+                                .setDescription("trlolo")
+                                .setVersion("1.2"))
+                        .add(new Service()
+                                .setType(Service.Type.JENKINS)
+                                .setUrl("http://i.ua")
+                                .setStatus(Status.OK))
+        );
+        projectRepository.save(
+                new Project()
+                        .setName("Test4")
+                        .setDescription("Best project")
+                        .setActive(true)
+                        .add(new Access(
+                                vetrov,
+                                Access.Type.OWNER))
+                        .add(new Instance()
+                                .setUrl("http://google.com")
+                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "asdf"))
+                                .setStatus(Status.OK)
+                                .setType(Instance.Type.PRODUCTION)
+                                .setDescription("trlolo")
+                                .setVersion("1.1"))
+                        .add(new Instance()
+                                .setUrl("http://google.com")
+                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "google"))
+                                .setStatus(Status.OK)
+                                .setType(Instance.Type.TEST)
+                                .setDescription("trlolo")
+                                .setVersion("1.2"))
+                        .add(new Service()
+                                .setType(Service.Type.JENKINS)
+                                .setUrl("http://i.ua")
+                                .setStatus(Status.OK))
+                        .add(new Service()
+                                .setType(Service.Type.SONAR)
+                                .setUrl("http://i.ua")
                                 .setStatus(Status.OK))
         );
     }

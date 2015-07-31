@@ -6,7 +6,7 @@ import java.util.*;
 @Entity
 @Table(name = "PROJECT")
 @NamedQueries ({
-        @NamedQuery (name = Project.ALL, query = "select p from Project p")
+        @NamedQuery (name = Project.ALL, query = "select p from Project p where p.active = true")
 })
 public class Project implements java.io.Serializable {
 
@@ -61,8 +61,9 @@ public class Project implements java.io.Serializable {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public Project setActive(boolean active) {
         this.active = active;
+        return this;
     }
 
     public Project add(Access acess) {
@@ -99,6 +100,23 @@ public class Project implements java.io.Serializable {
         for (Access projectAccess: accessList) {
             if(Access.Type.OWNER.equals(projectAccess.getAccessType())) {
                 return projectAccess.getUser();
+            }
+        }
+        return null;
+    }
+
+    public String getJenkinsUrl() {
+        return getService(Service.Type.JENKINS);
+    }
+
+    public String getSonarUrl() {
+        return getService(Service.Type.SONAR);
+    }
+
+    private String getService(Service.Type type) {
+        for(Service service : services) {
+            if(service.getType().equals(type)) {
+                return service.getUrl();
             }
         }
         return null;

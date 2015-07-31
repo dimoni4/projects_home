@@ -11,6 +11,9 @@
             class="mdi-navigation-menu"></i></a></div>
     <ul id="nav-mobile" class="collection side-nav fixed" style="width: 200px;">
         <li class="logo"><a id="logo-container" href="<@c.url value='/index'/>" class="brand-logo"></a></li>
+        <li>
+            <a class="waves-effect waves-light" href="<@c.url value='/dashboard'/>">Dashboard</a>
+        </li>
         <#list projects as project>
             <li>
                 <a href="/project/show/${project.id}" class="waves-effect waves-teal">
@@ -18,7 +21,7 @@
                 </a>
             </li>
         </#list>
-        <li class="logo">
+        <li>
             <a class="btn-medium waves-effect waves-light" href="<@c.url value='/project/create'/>">Add project</a>
         </li>
     </ul>

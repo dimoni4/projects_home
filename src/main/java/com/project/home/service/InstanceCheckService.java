@@ -9,7 +9,11 @@ import com.project.home.repository.ProjectRepository;
 import com.project.home.util.DefaultResult;
 import com.project.home.util.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.Future;
 
 
 @Service
@@ -29,19 +33,13 @@ public class InstanceCheckService {
     public void checkInstances() {
         for (Project project : projectRepository.getAllProjects()) {
             for (Instance instance : project.getInstances()) {
-                ServiceResult instanceWorkResult = instanceWorks(instance);
-                if (instanceWorkResult.isFail()) {
-                    instance.setStatus(Status.NE_OK);
-                    instance.add(new Violation(instanceWorkResult.getMessage()));
-                    instanceRepository.save(instance);
-                    emailSenderService.send(project.getOwner().getEmail(), "Проект " + project.getName(),
-                            "Проект " + project.getName() + " не работает. " + instanceWorkResult.getMessage());
-                }
+                checkInstance(instance);
             }
         }
     }
 
-    private ServiceResult instanceWorks(Instance instance) {
+    @Async
+    private Future<ServiceResult> checkInstance(Instance instance) {
         ServiceResult serviceResult = new DefaultResult(true);
         try {
             CheckerConnector.Response response = checkerConnector.send(instance.getUrl());
@@ -61,7 +59,17 @@ public class InstanceCheckService {
         } catch (Exception exception) {
             serviceResult.setFail(exception);
         }
-        return serviceResult;
+
+        if (serviceResult.isFail()) {
+            instance.setStatus(Status.NE_OK);
+            instance.add(new Violation(serviceResult.getMessage()));
+            instanceRepository.save(instance);
+            Project project = instance.getProject();
+            //TODO turn ON sending emails
+//            emailSenderService.send(project.getOwner().getEmail(), "Проект " + project.getName(),
+//                    "Проект " + project.getName() + " не работает. " + serviceResult.getMessage());
+        }
+        return new AsyncResult<ServiceResult>(serviceResult);
     }
 
     public void setCheckerConnector(CheckerConnector checkerConnector) {
