@@ -19,6 +19,13 @@
             </ul>
         </div>
         <div id="dashboard">
+            <h2>${project.name}</h2>
+            <div class="row">
+                <div><img class="serviceLogo" src="<@c.url value="/resources/img/git.png" />"></div>
+                <div><img class="serviceLogo" src="<@c.url value="/resources/img/jira.png" />"></div>
+                <div><img class="serviceLogo" src="<@c.url value="/resources/img/jenkins.png" />"></div>
+            </div>
+
             <div class="row">
                 <div class="col s4 left-align">
                     <h3>Services</h3>
