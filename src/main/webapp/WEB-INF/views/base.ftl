@@ -26,6 +26,7 @@
 
 <@layout.block name="js_head">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="<@c.url value="/resources/js/spin.js" />"></script>
     <script type="text/javascript" src="<@c.url value="/resources/js/materialize.min.js" />"></script>
     <script type="text/javascript" src="<@c.url value="/resources/js/app.js" />"></script>
     <!--[if lt IE 9]>

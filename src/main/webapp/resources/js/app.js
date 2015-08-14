@@ -35,3 +35,27 @@ function draw(chart) {
         }
     });
 }
+
+function getDataAndDraw(chart) {
+    chart.cont.spin();
+    $.ajax({
+            url: "project/violations/"+1,
+            type: "GET",
+            dataType: "json",
+            success: function(msg){
+                console.log(msg);
+                draw(chart);
+                chart.cont.unspin();
+            }
+        }
+    );
+
+    //$.getJSON('project/violations',
+    //    {},
+    //    function(msg){
+    //        console.log(msg);
+    //        draw(chart);
+    //        chart.cont.unspin();
+    //    }
+    //);
+}

@@ -5,7 +5,13 @@ import java.util.Date;
 
 @Entity
 @Table(name = "VIOLATION")
+@NamedQueries ({
+        @NamedQuery (name = Violation.FIND_BY_INSTANCE_ID, query = "select v from Violation v where v.instance.id = :instanceId"),
+        @NamedQuery (name = Violation.FIND_BY_PROJECT_ID, query = "select v from Violation v where v.instance.project.id = :projectId")
+})
 public class Violation implements java.io.Serializable {
+    public static final String FIND_BY_INSTANCE_ID = "Violation.findByInstanceId";
+    public static final String FIND_BY_PROJECT_ID = "Violation.findByProjectId";
 
     @Id
     @GeneratedValue
