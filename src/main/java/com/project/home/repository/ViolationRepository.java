@@ -38,4 +38,14 @@ public class ViolationRepository {
             return new LinkedList<Violation>();
         }
     }
+
+    @Transactional(readOnly = true)
+    public List<Violation> findAll() {
+        try {
+            return entityManager.createNamedQuery(Violation.FIND_ALL, Violation.class)
+                    .getResultList();
+        } catch (PersistenceException e) {
+            return new LinkedList<Violation>();
+        }
+    }
 }
