@@ -13,9 +13,9 @@
 <script src="http://code.highcharts.com/highcharts.js"></script>
 </@layout.put>
 
-<@layout.extends name="menu.ftl">
+<@layout.extends name="base.ftl">
     <@layout.put block="title" type="append">: Index</@layout.put>
-
+    <@layout.put block="menu.dashboard.active">class="active-menu"</@layout.put>
     <@layout.put block="content" type="replace">
     <h1>Dashboard</h1>
     <div class="row">

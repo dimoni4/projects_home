@@ -3,13 +3,13 @@
 <#assign s=JspTaglibs["http://www.springframework.org/tags"] />
 <#assign form=JspTaglibs["http://www.springframework.org/tags/form"] />
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><@layout.block name="title">Projects Home</@layout.block></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<#--<meta content="Платежный сервис, который позволяет совершать моментальные платежи с помощью мобильного телефона, интернета и платежных карт Visa, MasterCard во всём мире. Сервис моментальных платежей Liqpay создан Приват Банком и заверен сертификатами GoDaddy Secure Web Site, Verified by Visa и MasterCard SecureCode. Платежный сервис Liqpay - будущее электронной коммерции." name="description">-->
-<#--<meta content="платежные системы, платежная система, система моментальных платежей, моментальные платежи" name="keywords">-->
-<#--<link rel="shortcut icon" href="<@c.url value="/img/favicon.ico" />" type="image/x-icon">-->
+
     <script type="text/javascript">
         var $applicationRoot = "<@s.url value="/" />";
         var $host = document.location.protocol + '//' + document.location.host;
@@ -17,31 +17,314 @@
         var $resourcesRoot = "<@c.url value="/resources/" />";
     </script>
 
-<@layout.block name="css_head">
-    <link type="text/css" rel="stylesheet" href="<@c.url value="/resources/css/materialize.min.css" />"
-          media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="<@c.url value="/resources/css/main.css" />" media="screen,projection"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</@layout.block>
+    <@layout.block name="css_head">
+        <!-- Bootstrap Styles-->
+        <link href="<@c.url value="/resources/css/lib/bootstrap.css" />" rel="stylesheet" />
+        <!-- FontAwesome Styles-->
+        <link href="<@c.url value="/resources/css/lib/font-awesome.css" />" rel="stylesheet" />
+        <!-- Morris Chart Styles-->
+        <link href="<@c.url value="/resources/css/lib/morris-0.4.3.min.css" />" rel="stylesheet" />
+        <!-- Custom Styles-->
+        <link href="<@c.url value="/resources/css/lib/custom-styles.css" />" rel="stylesheet" />
+        <!-- Google Fonts-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
-<@layout.block name="js_head">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="<@c.url value="/resources/js/spin.js" />"></script>
-    <script type="text/javascript" src="<@c.url value="/resources/js/materialize.min.js" />"></script>
-    <script type="text/javascript" src="<@c.url value="/resources/js/app.js" />"></script>
-    <!--[if lt IE 9]>
-    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</@layout.block>
+        <link href="<@c.url value="/resources/css/main.css" />" rel="stylesheet" type="text/css"/>
+    </@layout.block>
+    <@layout.block name="js_head">
+
+        <!-- JS Scripts-->
+        <!-- jQuery Js -->
+        <script type="text/javascript" src="<@c.url value="/resources/js/lib/jquery-1.10.2.js" />"></script>
+        <!-- Bootstrap Js -->
+        <script type="text/javascript" src="<@c.url value="/resources/js/lib/bootstrap.min.js" />"></script>
+        <!-- Metis Menu Js -->
+        <script type="text/javascript" src="<@c.url value="/resources/js/lib/jquery.metisMenu.js" />"></script>
+        <!-- Morris Chart Js -->
+        <script type="text/javascript" src="<@c.url value="/resources/js/lib/morris/raphael-2.1.0.min.js" />"></script>
+        <script type="text/javascript" src="<@c.url value="/resources/js/lib/morris/morris.js" />"></script>
+
+        <script type="text/javascript" src="<@c.url value="/resources/js/lib/easypiechart.js" />"></script>
+        <script type="text/javascript" src="<@c.url value="/resources/js/lib/easypiechart-data.js" />"></script>
+
+
+        <!-- Custom Js -->
+        <script type="text/javascript" src="<@c.url value="/resources/js/lib/custom-scripts.js" />"></script>
+        <script type="text/javascript" src="<@c.url value="/resources/js/spin.js" />"></script>
+        <script type="text/javascript" src="<@c.url value="/resources/js/app.js" />"></script>
+
+    </@layout.block>
 </head>
+
 <body>
 <@layout.block name="body">
-<header>
-    <@layout.block name="menu"></@layout.block>
-</header>
-<main>
-    <@layout.block name="content"></@layout.block>
-</main>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index">Projects Home</a>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Doe</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Today</em>
+                                    </span>
+                            </div>
+                            <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem Ipsum has been the industry's standard dummy text ever since the...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>Read All Messages</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-messages -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-tasks">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 1</strong>
+                                    <span class="pull-right text-muted">60% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <span class="sr-only">60% Complete (success)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 2</strong>
+                                    <span class="pull-right text-muted">28% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" style="width: 28%">
+                                        <span class="sr-only">28% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 3</strong>
+                                    <span class="pull-right text-muted">60% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <span class="sr-only">60% Complete (warning)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 4</strong>
+                                    <span class="pull-right text-muted">85% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+                                        <span class="sr-only">85% Complete (danger)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>See All Tasks</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-tasks -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-comment fa-fw"></i> New Comment
+                                <span class="pull-right text-muted small">4 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                <span class="pull-right text-muted small">12 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                <span class="pull-right text-muted small">4 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-tasks fa-fw"></i> New Task
+                                <span class="pull-right text-muted small">4 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                <span class="pull-right text-muted small">4 min</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>See All Alerts</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-alerts -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a <@layout.block name="menu.index.active"></@layout.block> href="<@c.url value='/index'/>"><i class="fa fa-dashboard"></i> Index</a>
+                </li>
+                <li>
+                    <a <@layout.block name="menu.dashboard.active"></@layout.block> href="<@c.url value='/dashboard'/>"><i class="fa fa-bar-chart-o"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-sitemap"></i> Projects<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                    <#if projects?has_content>
+                        <#list projects as project>
+                            <li>
+                                <a href="/project/show/${project.id}">
+                                ${project.name}
+                                </a>
+                            </li>
+                        </#list>
+                    </#if>
+                    </ul>
+                </li>
+                <li>
+                    <a <@layout.block name="menu.project.create.active"></@layout.block> href="<@c.url value='/project/create'/>"><i class="fa fa-plus"></i> Add project</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+        <@layout.block name="content"></@layout.block>
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
 </@layout.block>
 </body>
+
 </html>

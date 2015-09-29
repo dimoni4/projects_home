@@ -2,9 +2,9 @@
 <#assign form=JspTaglibs["http://www.springframework.org/tags/form"]>
 <#assign s=JspTaglibs["http://www.springframework.org/tags"]>
 
-<@layout.extends name="menu.ftl">
+<@layout.extends name="base.ftl">
     <@layout.put block="title" type="append">: Index</@layout.put>
-
+    <@layout.put block="menu.project.create.active">class="active-menu"</@layout.put>
     <@layout.put block="content" type="replace">
     <div class="row">
         <form class="col offset-m4 m4" action="<@c.url value='/project/create' />" method="POST">

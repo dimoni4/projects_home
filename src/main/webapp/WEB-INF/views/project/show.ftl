@@ -2,7 +2,7 @@
 <#assign form=JspTaglibs["http://www.springframework.org/tags/form"]>
 <#assign s=JspTaglibs["http://www.springframework.org/tags"]>
 
-<@layout.extends name="menu.ftl">
+<@layout.extends name="base.ftl">
     <@layout.put block="title" type="append">: Index</@layout.put>
     <@layout.put block="js_head" type="append">
     <script type="text/javascript" src="<@c.url value="/resources/js/project/show.js" />"></script>

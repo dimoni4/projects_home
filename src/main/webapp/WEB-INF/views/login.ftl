@@ -6,25 +6,34 @@
 <@layout.extends name="base.ftl">
     <@layout.put block="body" type="replace">
     <div class="row">
-        <form class="col offset-m4 m4" action="<@c.url value='/login' />" method="POST">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Login
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form role="form" action="<@c.url value='/login' />" method="POST">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                <div class="form-group">
+                                    <input id="username" type="email" name="username" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input  id="password" type="password" name="password"  class="form-control" placeholder="Password">
+                                </div>
 
-            <div class="row">
-                <div class="input-field">
-                    <input id="username" type="email" name="username" class="validate">
-                    <label for="username">Email</label>
+                                <button type="submit" class="btn btn-default">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
                 </div>
+                <!-- /.panel-body -->
             </div>
-            <div class="row">
-                <div class="input-field">
-                    <input id="password" type="password" name="password" class="validate">
-                    <label for="password">Password</label>
-                </div>
-            </div>
-            <button class="btn waves-effect waves-light blue-grey lighten-1" type="submit" name="action">Enter
-                <i class="mdi-content-send right"></i>
-            </button>
-        </form>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
     </div>
     </@layout.put>
 </@layout.extends>
