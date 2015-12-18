@@ -284,28 +284,21 @@
     <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
-
-                <li>
-                    <a <@layout.block name="menu.index.active"></@layout.block> href="<@c.url value='/index'/>"><i class="fa fa-dashboard"></i> Index</a>
-                </li>
                 <li>
                     <a <@layout.block name="menu.dashboard.active"></@layout.block> href="<@c.url value='/dashboard'/>"><i class="fa fa-bar-chart-o"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-sitemap"></i> Projects<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-
-                    <#if projects?has_content>
-                        <#list projects as project>
-                            <li>
-                                <a href="/project/show/${project.id}">
-                                ${project.name}
-                                </a>
-                            </li>
-                        </#list>
-                    </#if>
-                    </ul>
+                    <a <@layout.block name="menu.index.active"></@layout.block> href="<@c.url value='/projects'/>"><i class="fa fa-sitemap"></i> Projects</a>
                 </li>
+                <#if projects?has_content>
+                    <#list projects as project>
+                        <li>
+                            <a <@layout.block name="menu.project.active"></@layout.block> href="/project/show/${project.id}">
+                                ${project.name}
+                            </a>
+                        </li>
+                    </#list>
+                </#if>
                 <li>
                     <a <@layout.block name="menu.project.create.active"></@layout.block> href="<@c.url value='/project/create'/>"><i class="fa fa-plus"></i> Add project</a>
                 </li>

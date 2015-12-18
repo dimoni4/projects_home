@@ -39,6 +39,7 @@ public class ProjectController {
     protected ModelAndView editProjectPageProcessor(@PathVariable final long id,
                                            @ModelAttribute final Project project) throws Exception {
         project.setId(id);
+        project.setActive(true);
         projectRepository.save(project);
         return new ModelAndView("project/show", new HashMap<String, Object>() {{
             put("project", projectRepository.getProject(project.getId()));
@@ -55,8 +56,9 @@ public class ProjectController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     protected ModelAndView createProjectPageProcessor(@ModelAttribute final Project project) throws Exception {
+        project.setActive(true);
+        projectRepository.save(project);
         return new ModelAndView("project/show", new HashMap<String, Object>() {{
-            projectRepository.save(project);
             put("project", projectRepository.getProject(project.getId()));
             put("projects", projectRepository.getAllProjects());
         }});

@@ -23,8 +23,16 @@ public class IndexController {
 	@Autowired
 	ProjectRepository projectRepository;
 
-	@RequestMapping(value = {"/", "/index"})
-	protected ModelAndView indexPage(Principal principal) throws Exception {
+	@RequestMapping(value = {"/projects"})
+	protected ModelAndView indexPage() throws Exception {
+		ModelAndView model = new ModelAndView("projects");
+		model.addObject("user", userRepository.getUser(userSession.getUserId()));
+		model.addObject("projects", projectRepository.getAllProjects());
+		return model;
+	}
+
+	@RequestMapping(value = {"/"})
+	protected ModelAndView index(Principal principal) throws Exception {
 		User user;
 		if(userSession.getUserId() == null ){
 			user = userRepository.findByEmail(principal.getName());
@@ -34,7 +42,7 @@ public class IndexController {
 		}
 
 
-		ModelAndView model = new ModelAndView("index");
+		ModelAndView model = new ModelAndView("projects");
 		model.addObject("user", user);
 		model.addObject("projects", projectRepository.getAllProjects());
 		return model;
