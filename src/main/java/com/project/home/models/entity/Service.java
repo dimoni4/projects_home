@@ -18,6 +18,14 @@ public class Service implements java.io.Serializable {
     private String url;
     private Status status;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Project getProject() {
         return project;
     }

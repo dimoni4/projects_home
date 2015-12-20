@@ -15,9 +15,6 @@ import java.util.HashMap;
 @RequestMapping(value = "/project")
 public class ProjectController {
     @Autowired
-    private UserSession userSession;
-
-    @Autowired
     ProjectRepository projectRepository;
 
     @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
@@ -65,19 +62,5 @@ public class ProjectController {
             put("project", projectRepository.getProject(project.getId()));
             put("projects", projectRepository.getAllProjects());
         }});
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    protected String saveProject(Project project) throws Exception {
-        projectRepository.save(project);
-        return "ok";
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE)
-    @ResponseBody
-    protected String deleteProject(Project project) throws Exception {
-        projectRepository.delete(project);
-        return "ok";
     }
 }

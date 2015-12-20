@@ -1,6 +1,7 @@
 package com.project.home.controller;
 
 import com.project.home.models.entity.Instance;
+import com.project.home.models.web.InstanceDTO;
 import com.project.home.repository.InstanceRepository;
 import com.project.home.repository.ProjectRepository;
 import com.project.home.service.UserSession;
@@ -12,11 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 
 @Controller
-@RequestMapping(value = "/instance")
+@RequestMapping(value = "/project/{projectId}/instance")
 public class InstanceController {
-    @Autowired
-    private UserSession userSession;
-
     @Autowired
     InstanceRepository instanceRepository;
 
@@ -24,7 +22,7 @@ public class InstanceController {
     ProjectRepository projectRepository;
 
     @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
-    protected ModelAndView showProjectPage(@PathVariable final long id) throws Exception {
+    protected ModelAndView showInstancePage(@PathVariable final long id) throws Exception {
         return new ModelAndView("instance/show", new HashMap<String, Object>() {{
             put("instance", instanceRepository.getInstance(id));
             put("projects", projectRepository.getAllProjects());
@@ -32,27 +30,30 @@ public class InstanceController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    protected ModelAndView editProjectPage(@PathVariable final long id) throws Exception {
+    protected ModelAndView editInstancePage(@PathVariable final long id) throws Exception {
         return new ModelAndView("instance/edit", new HashMap<String, Object>() {{
             put("instance", instanceRepository.getInstance(id));
             put("projects", projectRepository.getAllProjects());
         }});
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    protected ModelAndView editProjectPageProcessor(@PathVariable final long id,
-                                           @ModelAttribute final Instance instance) throws Exception {
-        instance.setId(id);
+    @RequestMapping(value = "/edit/{instanceId}", method = RequestMethod.POST)
+    protected ModelAndView editInstancePageProcessor(@PathVariable final long instanceId,
+                                           @ModelAttribute final InstanceDTO instanceDTO) throws Exception {
+        Instance instance = instanceRepository.getInstance(instanceId);
+        instance.setDescription(instanceDTO.getDescription());
+        instance.setUrl(instanceDTO.getUrl());
         instanceRepository.save(instance);
         return new ModelAndView("instance/show", new HashMap<String, Object>() {{
-            put("instance", instanceRepository.getInstance(instance.getId()));
+            put("instance", instanceRepository.getInstance(instanceId));
             put("projects", projectRepository.getAllProjects());
         }});
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    protected ModelAndView createProjectPage() throws Exception {
+    protected ModelAndView createInstancePage(@PathVariable final long projectId) throws Exception {
         return new ModelAndView("instance/create", new HashMap<String, Object>() {{
+            put("project", projectRepository.getProject(projectId));
             put("projects", projectRepository.getAllProjects());
         }});
     }
@@ -64,19 +65,5 @@ public class InstanceController {
             put("instance", instanceRepository.getInstance(instance.getId()));
             put("projects", projectRepository.getAllProjects());
         }});
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    protected String saveProject(Instance instance) throws Exception {
-        instanceRepository.save(instance);
-        return "ok";
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE)
-    @ResponseBody
-    protected String deleteProject(Instance instance) throws Exception {
-        instanceRepository.delete(instance);
-        return "ok";
     }
 }

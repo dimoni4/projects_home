@@ -3,7 +3,7 @@
 <#assign s=JspTaglibs["http://www.springframework.org/tags"]>
 
 <@layout.extends name="base.ftl">
-    <@layout.put block="title" type="append">: Edit ${instance.name} </@layout.put>
+    <@layout.put block="title" type="append">: Edit ${instance.url} </@layout.put>
 
     <@layout.put block="content" type="replace">
 
@@ -13,14 +13,21 @@
                 Edit instance
             </h1>
         </div>
+
+        <ol class="breadcrumb">
+            <li><a href="<@c.url value='/projects/' />">Projects</a></li>
+            <li><a href="<@c.url value='/project/show/' />${instance.project.id}">${instance.project.name}</a></li>
+            <li>${instance.url}</li>
+            <li class="active">Edit</li>
+        </ol>
     </div>
 
     <div class="row">
         <form role="form" class="form-horizontal" action="<@c.url value='/instance/edit/${instance.id}' />" method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="form-group">
-                <label for="name">Project name</label>
-                <input id="name" type="text" name="name" class="validate" value="${instance.name}">
+                <label for="url">URL</label>
+                <input id="url" type="text" name="url" class="validate" value="${instance.url}">
             </div>
             <div class="form-group">
                 <label for="description">Project description</label>

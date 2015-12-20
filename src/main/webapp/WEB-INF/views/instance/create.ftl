@@ -3,7 +3,7 @@
 <#assign s=JspTaglibs["http://www.springframework.org/tags"]>
 
 <@layout.extends name="base.ftl">
-    <@layout.put block="title" type="append">: Create project</@layout.put>
+    <@layout.put block="title" type="append">: Create instance</@layout.put>
     <@layout.put block="menu.project.create.active">class="active-menu"</@layout.put>
     <@layout.put block="content" type="replace">
 
@@ -14,22 +14,32 @@
                 Create instance
             </h1>
         </div>
+
+        <ol class="breadcrumb">
+            <li><a href="<@c.url value='/projects/' />">Projects</a></li>
+            <li><a href="<@c.url value='/project/show/' />${project.id}">${project.name}</a></li>
+            <li class="active">Create instance</li>
+        </ol>
     </div>
 
 
     <div class="row">
         <form role="form" class="form-horizontal" action="<@c.url value='/instance/create' />" method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input type="hidden" name="projectId" value="${project.id}"/>
             <div class="form-group">
-                <label for="name">Project name</label>
-                <input id="name" type="text" name="name" class="validate">
+                <label for="url" class="col-sm-3 control-label">URL</label>
+                <input id="url" type="text" name="url" class="validate col-sm-3">
             </div>
             <div class="form-group">
-                <label for="description">Project description</label>
-                <input  id="description" type="text" name="description"  class="validate">
+                <label for="description" class="col-sm-3 control-label">Instance description</label>
+                <input  id="description" type="text" name="description"  class="validate col-sm-3">
             </div>
-
-            <button type="submit" class="btn btn-default">Save</button>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-3">
+                    <button type="submit" class="btn btn-default">Save</button>
+                </div>
+            </div>
         </form>
     </div>
     </@layout.put>

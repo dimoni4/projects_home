@@ -27,8 +27,4 @@ public class InstanceRepository {
     public Instance getInstance(long id) {
         return entityManager.find(Instance.class, id);
     }
-
-    public void delete(Instance instance) {
-
-    }
 }
