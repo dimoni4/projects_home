@@ -1,14 +1,10 @@
 package com.project.home.service;
 
-import com.project.home.entity.*;
-import com.project.home.repository.ProjectRepository;
-import com.project.home.repository.UserRepository;
+import com.project.home.models.entity.*;
 import com.project.home.repository.ViolationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @org.springframework.stereotype.Service

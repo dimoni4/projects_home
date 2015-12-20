@@ -1,6 +1,6 @@
 package com.project.home.repository;
 
-import com.project.home.entity.Violation;
+import com.project.home.models.entity.Violation;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,6 +1,6 @@
 package com.project.home.controller;
 
-import com.project.home.entity.User;
+import com.project.home.models.entity.User;
 import com.project.home.repository.UserRepository;
 import com.project.home.service.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.project.home.entity;
+package com.project.home.models.entity;
 
 import javax.persistence.*;
 import java.util.*;

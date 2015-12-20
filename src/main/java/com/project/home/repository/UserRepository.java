@@ -2,7 +2,7 @@ package com.project.home.repository;
 
 import javax.persistence.*;
 
-import com.project.home.entity.User;
+import com.project.home.models.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

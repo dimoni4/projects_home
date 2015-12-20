@@ -1,8 +1,4 @@
-package com.project.home.entity;
-
-import org.hibernate.annotations.CollectionId;
-
-import javax.persistence.Column;
+package com.project.home.models.entity;
 
 /**
  * Created by dvetrov on 21/07/15.

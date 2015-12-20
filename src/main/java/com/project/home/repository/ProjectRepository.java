@@ -1,6 +1,6 @@
 package com.project.home.repository;
 
-import com.project.home.entity.Project;
+import com.project.home.models.entity.Project;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,12 +12,12 @@ import java.util.List;
 
 
 @Repository
+@Transactional
 public class ProjectRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Transactional
     public void save(Project project) {
         if (project.getId() != null && entityManager.find(Project.class, project.getId()) != null) {
             entityManager.merge(project);
@@ -26,7 +26,6 @@ public class ProjectRepository {
         }
     }
 
-    @Transactional
     public void delete(Project project) {
         project.setActive(false);
         save(project);

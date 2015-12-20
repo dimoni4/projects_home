@@ -18,26 +18,26 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.project.home.entity.User user = userRepository.findByEmail(username);
+        com.project.home.models.entity.User user = userRepository.findByEmail(username);
         if (user == null) {
             throw new UsernameNotFoundException("user not found");
         }
         return createUser(user);
     }
 
-    public void signin(com.project.home.entity.User user) {
+    public void signin(com.project.home.models.entity.User user) {
         SecurityContextHolder.getContext().setAuthentication(authenticate(user));
     }
 
-    private Authentication authenticate(com.project.home.entity.User user) {
+    private Authentication authenticate(com.project.home.models.entity.User user) {
         return new UsernamePasswordAuthenticationToken(createUser(user), null, Collections.singleton(createAuthority(user)));
     }
 
-    private User createUser(com.project.home.entity.User user) {
+    private User createUser(com.project.home.models.entity.User user) {
         return new User(user.getEmail(), user.getPassword(), Collections.singleton(createAuthority(user)));
     }
 
-    private GrantedAuthority createAuthority(com.project.home.entity.User user) {
+    private GrantedAuthority createAuthority(com.project.home.models.entity.User user) {
         return new SimpleGrantedAuthority(user.getRole());
     }
 

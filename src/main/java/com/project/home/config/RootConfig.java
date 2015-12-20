@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
         "com.project.home.config",
         "com.project.home.controller",
         "com.project.home.repository",
-        "com.project.home.entity",
+        "com.project.home.models.entity",
         "com.project.home.schedule",
         "com.project.home.service"
 })

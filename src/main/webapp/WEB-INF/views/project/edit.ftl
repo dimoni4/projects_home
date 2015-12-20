@@ -6,19 +6,32 @@
     <@layout.put block="title" type="append">: Edit ${project.name} </@layout.put>
 
     <@layout.put block="content" type="replace">
+
     <div class="row">
-        <form role="form" action="<@c.url value='/project/edit/${project.id}' />" method="POST">
+        <div class="col-md-12">
+            <h1 class="page-header">
+                Edit project ${project.name}
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <form role="form" class="form-horizontal" action="<@c.url value='/project/edit/${project.id}' />" method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="form-group">
-                <label for="name">Project name</label>
-                <input id="name" type="text" name="name" class="validate" value="${project.name}">
+                <label for="name" class="col-sm-3 control-label">Project name</label>
+                <input id="name" type="text" name="name" class="validate col-sm-3" value="${project.name}">
             </div>
             <div class="form-group">
-                <label for="description">Project description</label>
-                <input  id="description" type="text" name="description"  class="validate" value="${project.description}">
+                <label for="description" class="col-sm-3 control-label">Project description</label>
+                <input id="description" type="text" name="description" class="validate col-sm-3"
+                       value="${project.description}">
             </div>
-
-            <button type="submit" class="btn btn-default">Save</button>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-3">
+                    <button type="submit" class="btn btn-default">Save</button>
+                </div>
+            </div>
         </form>
     </div>
     </@layout.put>

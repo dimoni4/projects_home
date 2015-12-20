@@ -1,6 +1,7 @@
 package com.project.home.controller;
 
-import com.project.home.entity.Project;
+import com.project.home.models.entity.Project;
+import com.project.home.models.web.ProjectDTO;
 import com.project.home.repository.ProjectRepository;
 import com.project.home.service.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +36,16 @@ public class ProjectController {
         }});
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    protected ModelAndView editProjectPageProcessor(@PathVariable final long id,
-                                           @ModelAttribute final Project project) throws Exception {
-        project.setId(id);
-        project.setActive(true);
+    @RequestMapping(value = "/edit/{projectId}", method = RequestMethod.POST)
+    protected ModelAndView editProjectPageProcessor(@PathVariable final long projectId,
+                                           @ModelAttribute final ProjectDTO projectDTO) throws Exception {
+        Project project = projectRepository.getProject(projectId);
+        project.setName(projectDTO.getName());
+        project.setDescription(projectDTO.getDescription());
         projectRepository.save(project);
+
         return new ModelAndView("project/show", new HashMap<String, Object>() {{
-            put("project", projectRepository.getProject(project.getId()));
+            put("project", projectRepository.getProject(projectId));
             put("projects", projectRepository.getAllProjects());
         }});
     }

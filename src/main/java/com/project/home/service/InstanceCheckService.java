@@ -1,9 +1,9 @@
 package com.project.home.service;
 
-import com.project.home.entity.Instance;
-import com.project.home.entity.Project;
-import com.project.home.entity.Status;
-import com.project.home.entity.Violation;
+import com.project.home.models.entity.Instance;
+import com.project.home.models.entity.Project;
+import com.project.home.models.entity.Status;
+import com.project.home.models.entity.Violation;
 import com.project.home.repository.InstanceRepository;
 import com.project.home.repository.ProjectRepository;
 import com.project.home.util.DefaultResult;

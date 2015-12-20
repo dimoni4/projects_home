@@ -1,6 +1,6 @@
 package com.project.home.controller;
 
-import com.project.home.entity.ViolationsEntry;
+import com.project.home.models.entity.ViolationsEntry;
 import com.project.home.repository.ViolationRepository;
 import com.project.home.service.ViolationsService;
 import org.springframework.beans.factory.annotation.Autowired;
