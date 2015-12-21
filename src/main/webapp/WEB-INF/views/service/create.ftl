@@ -13,10 +13,16 @@
                 Create service
             </h1>
         </div>
+
+        <ol class="breadcrumb">
+            <li><a href="<@c.url value='/project/all/' />">Projects</a></li>
+            <li><a href="<@c.url value='/project/${project.id}' />">${project.name}</a></li>
+            <li class="active">Create service</li>
+        </ol>
     </div>
 
     <div class="row">
-        <form role="form" class="form-horizontal" action="<@c.url value='/service/create' />" method="POST">
+        <form role="form" class="form-horizontal" action="<@c.url value='/project/${project.id}/service/create' />" method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <div class="form-group">
@@ -35,7 +41,7 @@
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="type" id="typeJenins" value="JENINS">
+                            <input type="radio" name="type" id="typeJenins" value="JENKINS">
                             Jenins
                         </label>
                     </div>

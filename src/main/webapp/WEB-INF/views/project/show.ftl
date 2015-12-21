@@ -15,12 +15,13 @@
         <div class="col-md-12">
             <h1 class="page-header">
             ${project.name}
-                <small><a href="<@c.url value='/project/edit/${project.id}' />"><i class="fa fa-lg fa-pencil"></i></a>
+                <small>
+                    <a href="<@c.url value='/project/${project.id}/edit' />"><i class="fa fa-lg fa-pencil"></i></a>
                 </small>
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="<@c.url value='/projects/' />">Projects</a></li>
+                <li><a href="<@c.url value='/project/all' />">Projects</a></li>
                 <li class="active">${project.name}</li>
             </ol>
         </div>
@@ -40,50 +41,51 @@
         <div class="col-md-4 col-sm-12 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Services
-                </div>
-                <div class="panel-body">
-                    <#list project.services as service>
-                        <div class="list-group-item">
-                            <a href="${service.url}">
-                                <span class="badge">${service.status}</span> ${service.type}
-                            </a>
-                            <a href="<@c.url value='/service/edit/${service.id}' />">
-                                <i class="fa fa-fw fa-pencil"></i>
-                            </a>
-                        </div>
-                    </#list>
-                </div>
-                <a href="<@c.url value='/service/create' />">
-                    <button type="submit" class="btn btn-default">
-                        <i class="fa fa-fw fa-plus"></i>
-                    </button>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
                     Instances
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
                         <#list project.instances as instance>
-                            <a href="<@c.url value='/instance/show/${instance.id}' />" class="list-group-item">
-                                <span class="badge">${instance.status}</span>
+                            <a href="<@c.url value='/project/${project.id}/instance/${instance.id}' />"
+                               class="list-group-item">
                                 <span class="badge">${instance.version}</span>
-                                <i class="fa fa-fw fa-comment"></i> ${instance.url} ${instance.type}
+                                <i class="fa fa-fw fa-comment"></i> ${instance.type} ${instance.url}
                             </a>
                         </#list>
                     </div>
-                    <a href="<@c.url value='/instance/create' />">
+                    <a href="<@c.url value='/project/${project.id}/instance/create' />">
                         <button type="submit" class="btn btn-default">
                             <i class="fa fa-fw fa-plus"></i>
                         </button>
                     </a>
                 </div>
             </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Services
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <#list project.services as service>
+                            <a href="${service.url}" class="list-group-item">
+                                <img class="serviceLogo"
+                                     src="<@c.url value="/resources/img/service/${service.type}.png"/>"/> ${service.type}
 
+                                <a href="<@c.url value='/project/${project.id}/service/${service.id}/edit' />">
+                                    <i class="fa fa-fw fa-pencil"></i>
+                                </a>
+                            </a>
+                        </#list>
+                    </div>
+                    <a href="<@c.url value='/project/${project.id}/service/create' />">
+                        <button type="submit" class="btn btn-default">
+                            <i class="fa fa-fw fa-plus"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 

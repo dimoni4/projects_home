@@ -16,7 +16,7 @@
     </div>
 
     <div class="row">
-        <form role="form" class="form-horizontal" action="<@c.url value='/project/edit/${project.id}' />" method="POST">
+        <form role="form" class="form-horizontal" action="<@c.url value='/project/${project.id}/edit' />" method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="form-group">
                 <label for="name" class="col-sm-3 control-label">Project name</label>

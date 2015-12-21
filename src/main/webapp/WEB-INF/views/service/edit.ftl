@@ -13,10 +13,17 @@
                 Edit service ${service.type}
             </h1>
         </div>
+
+        <ol class="breadcrumb">
+            <li><a href="<@c.url value='/project/all/' />">Projects</a></li>
+            <li><a href="<@c.url value='/project/${service.project.id}' />">${service.project.name}</a></li>
+            <li>${service.url}</li>
+            <li class="active">Edit</li>
+        </ol>
     </div>
 
     <div class="row">
-        <form role="form" class="form-horizontal" action="<@c.url value='/service/edit/${service.id}' />" method="POST">
+        <form role="form" class="form-horizontal" action="<@c.url value='/project/${service.project.id}/service/${service.id}/edit' />" method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="form-group">
                 <label for="name" class="col-sm-3 control-label">URL</label>

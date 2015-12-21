@@ -16,7 +16,7 @@
         </div>
 
         <ol class="breadcrumb">
-            <li><a href="<@c.url value='/projects/' />">Projects</a></li>
+            <li><a href="<@c.url value='/project/all/' />">Projects</a></li>
             <li><a href="<@c.url value='/project/show/' />${project.id}">${project.name}</a></li>
             <li class="active">Create instance</li>
         </ol>
@@ -24,16 +24,42 @@
 
 
     <div class="row">
-        <form role="form" class="form-horizontal" action="<@c.url value='/instance/create' />" method="POST">
+        <form role="form" class="form-horizontal" action="<@c.url value='/project/${project.id}/instance/create' />"
+              method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input type="hidden" name="projectId" value="${project.id}"/>
+
             <div class="form-group">
                 <label for="url" class="col-sm-3 control-label">URL</label>
                 <input id="url" type="text" name="url" class="validate col-sm-3">
             </div>
             <div class="form-group">
+                <label class="col-sm-3 control-label" for="type">Type</label>
+
+                <div class="col-sm-3">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="type" id="typeTest" value="TEST">
+                            TEST
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="type" id="typeStage" value="STAGE">
+                            STAGE
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="type" id="typeProduction" value="PRODUCTION">
+                            PRODUCTION
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="description" class="col-sm-3 control-label">Instance description</label>
-                <input  id="description" type="text" name="description"  class="validate col-sm-3">
+                <input id="description" type="text" name="description" class="validate col-sm-3">
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-3">

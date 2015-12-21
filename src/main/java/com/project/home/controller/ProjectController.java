@@ -17,7 +17,7 @@ public class ProjectController {
     @Autowired
     ProjectRepository projectRepository;
 
-    @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}")
     protected ModelAndView showProjectPage(@PathVariable final long id) throws Exception {
         return new ModelAndView("project/show", new HashMap<String, Object>() {{
             put("project", projectRepository.getProject(id));
@@ -25,7 +25,7 @@ public class ProjectController {
         }});
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
     protected ModelAndView editProjectPage(@PathVariable final long id) throws Exception {
         return new ModelAndView("project/edit", new HashMap<String, Object>() {{
             put("project", projectRepository.getProject(id));
@@ -33,7 +33,7 @@ public class ProjectController {
         }});
     }
 
-    @RequestMapping(value = "/edit/{projectId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{projectId}/edit", method = RequestMethod.POST)
     protected ModelAndView editProjectPageProcessor(@PathVariable final long projectId,
                                            @ModelAttribute final ProjectDTO projectDTO) throws Exception {
         Project project = projectRepository.getProject(projectId);

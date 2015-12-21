@@ -23,9 +23,9 @@ public class IndexController {
 	@Autowired
 	ProjectRepository projectRepository;
 
-	@RequestMapping(value = {"/projects"})
+	@RequestMapping(value = {"/project/all"})
 	protected ModelAndView indexPage() throws Exception {
-		ModelAndView model = new ModelAndView("projects");
+		ModelAndView model = new ModelAndView("project/all");
 		model.addObject("user", userRepository.getUser(userSession.getUserId()));
 		model.addObject("projects", projectRepository.getAllProjects());
 		return model;
@@ -42,7 +42,7 @@ public class IndexController {
 		}
 
 
-		ModelAndView model = new ModelAndView("projects");
+		ModelAndView model = new ModelAndView("project/all");
 		model.addObject("user", user);
 		model.addObject("projects", projectRepository.getAllProjects());
 		return model;

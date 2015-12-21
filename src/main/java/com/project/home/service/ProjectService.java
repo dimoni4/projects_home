@@ -27,7 +27,50 @@ public class ProjectService {
 
         projectRepository.save(
                 new Project()
-                        .setName("Test1")
+                        .setName("ОЧ - В интернете")
+                        .setDescription("Интернет Оплата частями")
+                        .setActive(true)
+                        .add(new Access(
+                                vetrov,
+                                Access.Type.OWNER))
+                        .add(new Instance()
+                                .setUrl("https://payparts2.privatbank.ua/ipp/")
+                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "предлагаем"))
+                                .setStatus(Status.OK)
+                                .setType(Instance.Type.PRODUCTION)
+                                .setDescription("боевой инстанс")
+                                .setVersion("2.102"))
+                        .add(new Instance()
+                                .setUrl("https://brtp.test.it.loc/ipp/")
+                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "предлагаем"))
+                                .setStatus(Status.OK)
+                                .setType(Instance.Type.TEST)
+                                .setDescription("тестовый инстанс")
+                                .setVersion("2.371"))
+                        .add(new Instance()
+                                .setUrl("https://brtp-stage.test.it.loc/ipp/")
+                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "предлагаем"))
+                                .setStatus(Status.OK)
+                                .setType(Instance.Type.STAGE)
+                                .setDescription("предрелиз")
+                                .setVersion("2.105"))
+                        .add(new Service()
+                                .setType(Service.Type.JENKINS)
+                                .setUrl("http://10.1.98.135:8000/view/Applications/job/pp_internet/")
+                                .setStatus(Status.OK))
+                        .add(new Service()
+                                .setType(Service.Type.SONAR)
+                                .setUrl("http://10.1.98.135:8001/dashboard/index?id=pp_internet")
+                                .setStatus(Status.OK))
+                        .add(new Service()
+                                .setType(Service.Type.LOG)
+                                .setUrl("http://10.1.109.51:9000/apache-tomcat-payparts2.privatbank.ua/pp_internet/")
+                                .setStatus(Status.OK))
+        );
+
+        projectRepository.save(
+                new Project()
+                        .setName("ОЧ - Автозаведение")
                         .setDescription("Best project")
                         .setActive(true)
                         .add(new Access(
@@ -55,35 +98,7 @@ public class ProjectService {
 
         projectRepository.save(
                 new Project()
-                        .setName("Testw")
-                        .setDescription("Best project")
-                        .setActive(true)
-                        .add(new Access(
-                                vetrov,
-                                Access.Type.OWNER))
-                        .add(new Instance()
-                                .setUrl("http://google.com")
-                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "asdf"))
-                                .setStatus(Status.OK)
-                                .setType(Instance.Type.PRODUCTION)
-                                .setDescription("trlolo")
-                                .setVersion("1.1"))
-                        .add(new Instance()
-                                .setUrl("http://google.com")
-                                .setCheckCreteria(new CheckCreteria(CheckCreteria.Type.SEARCH_WORD, "google"))
-                                .setStatus(Status.OK)
-                                .setType(Instance.Type.TEST)
-                                .setDescription("trlolo")
-                                .setVersion("1.2"))
-                        .add(new Service()
-                                .setType(Service.Type.JENKINS)
-                                .setUrl("http://i.ua")
-                                .setStatus(Status.OK))
-        );
-
-        projectRepository.save(
-                new Project()
-                        .setName("Test3")
+                        .setName("Эквайринг - Мои торговые точки")
                         .setDescription("Best project")
                         .setActive(true)
                         .add(new Access(
@@ -110,7 +125,7 @@ public class ProjectService {
         );
         projectRepository.save(
                 new Project()
-                        .setName("Test4")
+                        .setName("Страхование - Физ лица")
                         .setDescription("Best project")
                         .setActive(true)
                         .add(new Access(

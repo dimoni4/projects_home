@@ -14,12 +14,17 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="page-header">
-                ${instance.url} <small><a href="<@c.url value='/instance/edit/${instance.id}' />"><i class="fa fa-lg fa-pencil"></i></a></small>
+                ${instance.url}
+                    <small>
+                        <a href="<@c.url value='/project/${instance.project.id}/instance/${instance.id}/edit' />">
+                            <i class="fa fa-lg fa-pencil"></i>
+                        </a>
+                    </small>
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="<@c.url value='/projects/' />">Projects</a></li>
-                <li><a href="<@c.url value='/project/show/' />${instance.project.id}">${instance.project.name}</a></li>
+                <li><a href="<@c.url value='/project/all/' />">Projects</a></li>
+                <li><a href="<@c.url value='/project/${instance.project.id}' />">${instance.project.name}</a></li>
                 <li class="active">${instance.url}</li>
             </ol>
         </div>

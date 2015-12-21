@@ -288,12 +288,12 @@
                     <a <@layout.block name="menu.dashboard.active"></@layout.block> href="<@c.url value='/dashboard'/>"><i class="fa fa-bar-chart-o"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a <@layout.block name="menu.index.active"></@layout.block> href="<@c.url value='/projects'/>"><i class="fa fa-sitemap"></i> Projects</a>
+                    <a <@layout.block name="menu.index.active"></@layout.block> href="<@c.url value='/project/all'/>"><i class="fa fa-sitemap"></i> Projects</a>
                 </li>
                 <#if projects?has_content>
                     <#list projects as project>
                         <li>
-                            <a <@layout.block name="menu.project.active"></@layout.block> href="/project/show/${project.id}">
+                            <a <@layout.block name="menu.project.active"></@layout.block> href="/project/${project.id}">
                                 ${project.name}
                             </a>
                         </li>

@@ -39,7 +39,7 @@
                     <#list project.instances as instance>
                         <#list instance.violations as violation>
                             <tr>
-                                <td><a href="/project/show/${project.id}" class="waves-effect waves-teal">${project.name}</a></td>
+                                <td><a href="/project/${project.id}" class="waves-effect waves-teal">${project.name}</a></td>
                                 <td><a href="${instance.url}" class="waves-effect waves-teal">${instance.type}</a></td>
                                 <td>${violation.dateTime}</td>
                                 <td>${violation.message}</td>

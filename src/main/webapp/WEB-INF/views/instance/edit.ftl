@@ -15,15 +15,15 @@
         </div>
 
         <ol class="breadcrumb">
-            <li><a href="<@c.url value='/projects/' />">Projects</a></li>
-            <li><a href="<@c.url value='/project/show/' />${instance.project.id}">${instance.project.name}</a></li>
+            <li><a href="<@c.url value='/project/all/' />">Projects</a></li>
+            <li><a href="<@c.url value='/project/${instance.project.id}' />">${instance.project.name}</a></li>
             <li>${instance.url}</li>
             <li class="active">Edit</li>
         </ol>
     </div>
 
     <div class="row">
-        <form role="form" class="form-horizontal" action="<@c.url value='/instance/edit/${instance.id}' />" method="POST">
+        <form role="form" class="form-horizontal" action="<@c.url value='/project/${instance.project.id}/instance/${instance.id}/edit' />" method="POST">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="form-group">
                 <label for="url">URL</label>
