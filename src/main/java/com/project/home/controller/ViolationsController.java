@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = "/project/{projectId}/violation")
 public class ViolationsController {
     @Autowired
     ViolationRepository violationRepository;
@@ -17,13 +18,14 @@ public class ViolationsController {
     @Autowired
     ViolationsService violationsService;
 
-    @RequestMapping(value = "/project/violations/{projectId}")
+    @RequestMapping(value = "/chart")
     protected @ResponseBody List<ViolationsEntry> getViolationsByProject(@PathVariable final long projectId) throws Exception {
         return violationsService.violationsChartData(projectId);
     }
 
-    @RequestMapping(value = "/project/violations")
-    protected @ResponseBody List<ViolationsEntry> getAllViolations() throws Exception {
-        return violationsService.violationsChartData();
+    @RequestMapping(value = "/{violationId}")
+    protected @ResponseBody List<ViolationsEntry> getViolationsByProject(@PathVariable final long projectId,
+                                                                         @PathVariable final long violationId) throws Exception {
+        return violationRepository.getViolation(violationId);
     }
 }

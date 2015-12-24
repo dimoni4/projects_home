@@ -63,6 +63,6 @@ public class Service implements java.io.Serializable {
     }
 
     public static enum Type {
-        JENKINS, SONAR, LOG, REPOSITORY
+        JENKINS, SONAR, LOG, GIT
     }
 }

@@ -49,7 +49,8 @@
                             <a href="<@c.url value='/project/${project.id}/instance/${instance.id}' />"
                                class="list-group-item">
                                 <span class="badge">${instance.version}</span>
-                                <i class="fa fa-fw fa-comment"></i> ${instance.type} ${instance.url}
+                                <span class="label label-danger pull-xs-right">${instance.violations?size}</span>
+                            ${instance.type} ${instance.url}
                             </a>
                         </#list>
                     </div>
@@ -69,13 +70,11 @@
                 <div class="panel-body">
                     <div class="list-group">
                         <#list project.services as service>
-                            <a href="${service.url}" class="list-group-item">
-                                <img class="serviceLogo"
-                                     src="<@c.url value="/resources/img/service/${service.type}.png"/>"/> ${service.type}
-
-                                <a href="<@c.url value='/project/${project.id}/service/${service.id}/edit' />">
-                                    <i class="fa fa-fw fa-pencil"></i>
-                                </a>
+                            <a href="${service.url}">
+                                <div class="list-group-item">
+                                    <img class="serviceLogo" src="<@c.url value="/resources/img/service/${service.type}.png"/>"/> ${service.type}
+                                    <a href="<@c.url value='/project/${project.id}/service/${service.id}/edit' />"><i class="fa fa-fw fa-pencil"></i></a>
+                                </div>
                             </a>
                         </#list>
                     </div>
@@ -101,7 +100,7 @@
                             <#list instance.violations as violation>
                                 <a href="#" class="list-group-item">
                                     <span class="badge">${instance.type}</span>
-                                    <i class="fa fa-fw fa-comment"></i>${violation.dateTime} ${violation.message}
+                                    ${violation.dateTime} ${violation.message}
                                 </a>
                             </#list>
                         </#list>

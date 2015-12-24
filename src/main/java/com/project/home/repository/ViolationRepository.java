@@ -1,6 +1,7 @@
 package com.project.home.repository;
 
 import com.project.home.models.entity.Violation;
+import com.project.home.models.entity.ViolationsEntry;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,5 +48,10 @@ public class ViolationRepository {
         } catch (PersistenceException e) {
             return new LinkedList<Violation>();
         }
+    }
+
+    @Transactional(readOnly = true)
+    public ViolationsEntry getViolation(long violationId) {
+        return entityManager.find(ViolationsEntry.class, violationId);
     }
 }

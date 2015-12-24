@@ -17,7 +17,7 @@
 
         <ol class="breadcrumb">
             <li><a href="<@c.url value='/project/all/' />">Projects</a></li>
-            <li><a href="<@c.url value='/project/show/' />${project.id}">${project.name}</a></li>
+            <li><a href="<@c.url value='/project/${project.id}'/>">${project.name}</a></li>
             <li class="active">Create instance</li>
         </ol>
     </div>

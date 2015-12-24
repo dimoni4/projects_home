@@ -48,11 +48,7 @@
                                     <a href="${service.url}">
                                         <div class="list-group-item">
                                             <img class="serviceLogo" src="<@c.url value="/resources/img/service/${service.type}.png"/>"/> ${service.type}
-                                                <span class="label pull-xs-right">
-                                                    <a href="<@c.url value='/project/${project.id}/service/${service.id}/edit' />">
-                                                        <i class="fa fa-fw fa-pencil"></i>
-                                                    </a>
-                                                </span>
+                                            <a href="<@c.url value='/project/${project.id}/service/${service.id}/edit' />"><i class="fa fa-fw fa-pencil"></i></a>
                                         </div>
                                     </a>
                                 </#list>

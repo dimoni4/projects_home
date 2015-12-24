@@ -66,6 +66,18 @@ public class ProjectService {
                                 .setType(Service.Type.LOG)
                                 .setUrl("http://10.1.109.51:9000/apache-tomcat-payparts2.privatbank.ua/pp_internet/")
                                 .setStatus(Status.OK))
+                        .add(new Service()
+                                .setType(Service.Type.LOG)
+                                .setUrl("http://10.1.108.192:9000/pp_internet/pp_internet/")
+                                .setStatus(Status.OK))
+                        .add(new Service()
+                                .setType(Service.Type.LOG)
+                                .setUrl("http://10.56.0.34:9000/pp_internet/pp_internet/")
+                                .setStatus(Status.OK))
+                        .add(new Service()
+                                .setType(Service.Type.GIT)
+                                .setUrl("https://git.privatbank.ua/fe/pp_internet")
+                                .setStatus(Status.OK))
         );
 
         projectRepository.save(
