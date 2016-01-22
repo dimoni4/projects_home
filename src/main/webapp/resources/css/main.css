@@ -91,3 +91,7 @@ header, main, footer {
 .serviceLogo {
     height: 20px;
 }
+.instanceType {
+    min-width: 60px;
+    float: left;
+}

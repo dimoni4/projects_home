@@ -1,8 +1,6 @@
 package com.project.home.models.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "INSTANCE")
@@ -15,7 +13,7 @@ public class Instance implements java.io.Serializable {
     private String description;
     private Type type;
     private String url;
-    private String version;
+    private String version = "";
     private Status status;
 
     @Embedded
@@ -24,13 +22,19 @@ public class Instance implements java.io.Serializable {
     @ManyToOne
     private Project project;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "instance")
-    private Set<Violation> violations = new HashSet<Violation>();
-
     public enum Type {
-        TEST, STAGE, PRODUCTION
+        TEST, STAGE, PROD
     }
 
+    public Instance(Type type, String url) {
+        this.type = type;
+        this.url = url;
+        this.status = Status.UNKNOWN;
+    }
+
+    public Instance() {
+
+    }
 
     public Long getId() {
         return id;
@@ -81,6 +85,10 @@ public class Instance implements java.io.Serializable {
         return checkCreteria;
     }
 
+    public boolean hasCheckCreteria() {
+        return checkCreteria != null;
+    }
+
     public Instance setCheckCreteria(CheckCreteria checkCreteria) {
         this.checkCreteria = checkCreteria;
         return this;
@@ -101,18 +109,6 @@ public class Instance implements java.io.Serializable {
 
     public Instance setProject(Project project) {
         this.project = project;
-        return this;
-    }
-
-
-
-    public Set<Violation> getViolations() {
-        return new HashSet<Violation>(violations);
-    }
-
-    public Instance add(Violation violation) {
-        violation.setInstance(this);
-        violations.add(violation);
         return this;
     }
 }

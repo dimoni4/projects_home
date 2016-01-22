@@ -5,15 +5,18 @@
             <fileNamePattern>timing/stdout.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>{ DT: "%d{yyyy-MM-dd HH:mm:ss.SSS}", TYPE: "%type", REF: "%ref", SID:"%sid", REMOTE_HOST: "%host"}</pattern>
+            <pattern>{ DT: "%d{yyyy-MM-dd HH:mm:ss.SSS}", TYPE: "%type", REF: "%ref", SID:"%sid", REMOTE_HOST:
+                "%host"}
+            </pattern>
         </encoder>
     </appender>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-    <withJansi>true</withJansi>
+        <withJansi>true</withJansi>
         <target>System.out</target>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5level [%thread] %logger - %replace(%msg){'', ''}%n%xEx{20}</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5level [%thread] %logger - %replace(%msg){'', ''}%n%xEx{20}
+            </pattern>
         </encoder>
     </appender>
 
@@ -22,15 +25,15 @@
     </logger>
 
     <logger name="org.springframework" level="ERROR">
-        <appender-ref ref="console" />
+        <appender-ref ref="console"/>
     </logger>
 
     <logger name="org.hibernate" level="ERROR">
-        <appender-ref ref="console" />
+        <appender-ref ref="console"/>
     </logger>
 
     <root level="TRACE">
-        <appender-ref ref="console" />
+        <appender-ref ref="console"/>
     </root>
 
 </configuration>

@@ -31,6 +31,14 @@ public class Project implements java.io.Serializable {
 
     private boolean active;
 
+    public Project() {
+    }
+
+    public Project(String name) {
+        this.name = name;
+        this.active = true;
+    }
+
     public Long getId() {
         return id;
     }

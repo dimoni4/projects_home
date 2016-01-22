@@ -49,7 +49,6 @@
                             <a href="<@c.url value='/project/${project.id}/instance/${instance.id}' />"
                                class="list-group-item">
                                 <span class="badge">${instance.version}</span>
-                                <span class="label label-danger pull-xs-right">${instance.violations?size}</span>
                             ${instance.type} ${instance.url}
                             </a>
                         </#list>
@@ -85,29 +84,6 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Violations
-                </div>
-                <div class="panel-body">
-                    <div class="list-group">
-                        <#list project.instances as instance>
-                            <#list instance.violations as violation>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge">${instance.type}</span>
-                                    ${violation.dateTime} ${violation.message}
-                                </a>
-                            </#list>
-                        </#list>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
     </@layout.put>

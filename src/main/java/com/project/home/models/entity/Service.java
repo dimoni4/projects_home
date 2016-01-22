@@ -18,6 +18,15 @@ public class Service implements java.io.Serializable {
     private String url;
     private Status status;
 
+    public Service() {
+    }
+
+    public Service(Type type, String url) {
+        this.type = type;
+        this.url = url;
+        this.status = Status.UNKNOWN;
+    }
+
     public Long getId() {
         return id;
     }
@@ -63,6 +72,6 @@ public class Service implements java.io.Serializable {
     }
 
     public static enum Type {
-        JENKINS, SONAR, LOG, GIT
+        JENKINS, SONAR, LOG, LOG_TEST, GIT
     }
 }

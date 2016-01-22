@@ -21,33 +21,6 @@
     <div class="row">
         <div class="col s6">
             <div class="chart" id="responseTimeChart"></div>
-            <div class="chart" id="violationsChart"></div>
-        </div>
-        <div class="col s6">
-            <h3>Violations</h3>
-            <table class="responsive-table striped violations">
-                <thead>
-                <tr>
-                    <th data-field="project">Project</th>
-                    <th data-field="service">Instance</th>
-                    <th data-field="datetime">Time</th>
-                    <th data-field="message">Message</th>
-                </tr>
-                </thead>
-
-                <#list projects as project>
-                    <#list project.instances as instance>
-                        <#list instance.violations as violation>
-                            <tr>
-                                <td><a href="/project/${project.id}" class="waves-effect waves-teal">${project.name}</a></td>
-                                <td><a href="${instance.url}" class="waves-effect waves-teal">${instance.type}</a></td>
-                                <td>${violation.dateTime}</td>
-                                <td>${violation.message}</td>
-                            </tr>
-                        </#list>
-                    </#list>
-                </#list>
-            </table>
         </div>
     </div>
     </@layout.put>

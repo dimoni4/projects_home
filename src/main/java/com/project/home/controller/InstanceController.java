@@ -5,7 +5,6 @@ import com.project.home.models.entity.Status;
 import com.project.home.models.web.InstanceDTO;
 import com.project.home.repository.InstanceRepository;
 import com.project.home.repository.ProjectRepository;
-import com.project.home.service.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -61,7 +60,7 @@ public class InstanceController {
     protected String createProjectPageProcessor(@ModelAttribute final Instance instance,
                                                       @PathVariable final long projectId) throws Exception {
         instance.setVersion("");
-        instance.setStatus(Status.OK);
+        instance.setStatus(Status.GOOD);
         instance.setProject(projectRepository.getProject(projectId));
         instanceRepository.save(instance);
         return "forward:/project/"+projectId;

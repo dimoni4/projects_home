@@ -50,7 +50,7 @@ public class ServiceController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     protected String createServicePageProcessor(@ModelAttribute final Service service,
                                                       @PathVariable final long projectId) throws Exception {
-        service.setStatus(Status.OK);
+        service.setStatus(Status.GOOD);
         service.setProject(projectRepository.getProject(projectId));
         serviceRepository.save(service);
         return "forward:/project/"+projectId;

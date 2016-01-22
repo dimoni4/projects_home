@@ -42,25 +42,6 @@
             </div>
 
         </div>
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Violations
-                </div>
-                <div class="panel-body">
-                    <div class="list-group">
-
-                            <#list instance.violations as violation>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge">${instance.type}</span>
-                                    <i class="fa fa-fw fa-comment"></i>${violation.dateTime} ${violation.message}
-                                </a>
-                            </#list>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </div>
     </@layout.put>
 </@layout.extends>

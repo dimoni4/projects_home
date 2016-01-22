@@ -2,7 +2,7 @@
 <#assign form=JspTaglibs["http://www.springframework.org/tags/form"]>
 <#assign s=JspTaglibs["http://www.springframework.org/tags"]>
 
-<@layout.extends name="base.ftl">
+<@layout.extends name="public/base.ftl">
     <@layout.put block="title" type="append">: Projects</@layout.put>
     <@layout.put block="menu.index.active">class="active-menu"</@layout.put>
     <@layout.put block="content" type="replace">
@@ -30,24 +30,23 @@
                         <#list projects as project>
                         <tr>
                             <td>
-                                <a href="/project/${project.id}"
-                                   class="waves-effect waves-teal">${project.name}</a>
+                            ${project.name}
                             </td>
                             <td>
                                 <#list project.instances as instance>
-                                        <div class="list-group-item">
-                                            <#if instance.status == "GOOD">
-                                                <span class="label label-success">&nbsp;</span>
-                                            <#elseif instance.status == "BAD">
-                                                <span class="label label-danger">&nbsp;</span>
-                                            <#else>
-                                                <span class="label label-default">&nbsp;</span>
-                                            </#if>
-                                            <span class="badge">${instance.version}</span>
-                                            <div class="instanceType">${instance.type}</div>
-                                            <a href="${instance.url}">${instance.url}</a>
-                                            <a href="<@c.url value='/project/${project.id}/instance/${instance.id}/edit' />"><i class="fa fa-fw fa-pencil"></i></a>
-                                        </div>
+                                    <div class="list-group-item">
+                                        <#if instance.status == "GOOD">
+                                            <span class="label label-success">&nbsp;</span>
+                                        <#elseif instance.status == "BAD">
+                                            <span class="label label-danger">&nbsp;</span>
+                                        <#else>
+                                            <span class="label label-default">&nbsp;</span>
+                                        </#if>
+                                        <span class="badge">${instance.version}</span>
+
+                                        <div class="instanceType">${instance.type}</div>
+                                        <a href="${instance.url}">${instance.url}</a>
+                                    </div>
                                 </#list>
                             </td>
                             <td>

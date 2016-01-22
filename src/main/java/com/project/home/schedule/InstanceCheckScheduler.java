@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class InstanceCheckScheduler {
 
-    private static final Logger logger = LoggerFactory.getLogger(InstanceCheckScheduler.class);
-
     @Autowired
     private InstanceCheckService instanceCheckService;
 

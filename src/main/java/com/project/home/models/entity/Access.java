@@ -17,9 +17,9 @@ public class Access implements java.io.Serializable {
 
     private Type accessType;
 
-    public Access(User user, Type accessType) {
-        this.user = user;
+    public Access(Type accessType, User user) {
         this.accessType = accessType;
+        this.user = user;
     }
 
     public Access() {
