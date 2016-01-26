@@ -33,7 +33,7 @@ public class Instance implements java.io.Serializable {
     }
 
     public Instance() {
-
+        checkCreteria = new CheckCreteria();
     }
 
     public Long getId() {

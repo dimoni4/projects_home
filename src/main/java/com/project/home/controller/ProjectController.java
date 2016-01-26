@@ -3,6 +3,7 @@ package com.project.home.controller;
 import com.project.home.models.entity.Project;
 import com.project.home.models.web.ProjectDTO;
 import com.project.home.repository.ProjectRepository;
+import com.project.home.repository.UserRepository;
 import com.project.home.service.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,13 @@ import java.util.HashMap;
 public class ProjectController {
     @Autowired
     ProjectRepository projectRepository;
+
+    @RequestMapping(value = {"/all", "/*"})
+    protected ModelAndView indexPage() throws Exception {
+        ModelAndView model = new ModelAndView("project/all");
+        model.addObject("projects", projectRepository.getAllProjects());
+        return model;
+    }
 
     @RequestMapping(value = "/{id}")
     protected ModelAndView showProjectPage(@PathVariable final long id) throws Exception {

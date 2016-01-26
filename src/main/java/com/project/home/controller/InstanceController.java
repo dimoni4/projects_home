@@ -7,6 +7,7 @@ import com.project.home.repository.InstanceRepository;
 import com.project.home.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -57,7 +58,7 @@ public class InstanceController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    protected String createProjectPageProcessor(@ModelAttribute final Instance instance,
+    protected String createProjectPageProcessor(Model model, @ModelAttribute final Instance instance,
                                                       @PathVariable final long projectId) throws Exception {
         instance.setVersion("");
         instance.setStatus(Status.GOOD);

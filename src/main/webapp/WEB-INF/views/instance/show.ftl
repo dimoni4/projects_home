@@ -37,7 +37,9 @@
                     Info
                 </div>
                 <div class="panel-body">
-                ${instance.type}
+                    ${instance.type}
+                    ${instance.checkCreteria.type}
+                    ${instance.checkCreteria.checkWord}
                 </div>
             </div>
 

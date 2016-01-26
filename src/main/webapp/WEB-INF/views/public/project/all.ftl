@@ -9,8 +9,8 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1 class="page-header">
-                Projects
+            <h1 class="h1">
+                Projects - Департамент разработки front-end систем
             </h1>
         </div>
     </div>
@@ -18,43 +18,39 @@
     <div class="row">
         <div class="panel-body">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th data-field="name">Name</th>
-                        <th data-field="instances">Instances</th>
-                        <th data-field="services">Services</th>
-                    </tr>
-                    </thead>
+                <table class="table">
                     <tbody>
                         <#list projects as project>
                         <tr>
                             <td>
-                            ${project.name}
+                                <span class="h3">${project.name}</span>
+                                <p>
+                                    <#list project.services as service>
+                                        <a href="${service.url}">
+                                            <img class="serviceLogo"
+                                                 src="<@c.url value="/resources/img/service/${service.type}.png"/>"/>
+                                        </a>
+                                    </#list>
+                                </p>
                             </td>
                             <td>
-                                <#list project.instances as instance>
-                                    <div class="list-group-item">
-                                        <#if instance.status == "GOOD">
-                                            <span class="label label-success">&nbsp;</span>
-                                        <#elseif instance.status == "BAD">
-                                            <span class="label label-danger">&nbsp;</span>
-                                        <#else>
-                                            <span class="label label-default">&nbsp;</span>
-                                        </#if>
-                                        <span class="badge">${instance.version}</span>
+                                <ul>
+                                    <#list project.instances as instance>
+                                        <li class="list-group-item">
+                                            <#if instance.status == "GOOD">
+                                                <span class="label label-success">&nbsp;</span>
+                                            <#elseif instance.status == "BAD">
+                                                <span class="label label-danger">&nbsp;</span>
+                                            <#else>
+                                                <span class="label label-default">&nbsp;</span>
+                                            </#if>
+                                            <span class="badge">${instance.version}</span>
 
-                                        <div class="instanceType">${instance.type}</div>
-                                        <a href="${instance.url}">${instance.url}</a>
-                                    </div>
-                                </#list>
-                            </td>
-                            <td>
-                                <#list project.services as service>
-                                    <a href="${service.url}">
-                                        <img class="serviceLogo" src="<@c.url value="/resources/img/service/${service.type}.png"/>"/>
-                                    </a>
-                                </#list>
+                                            <div class="instanceType">${instance.type}</div>
+                                            <a href="${instance.url}">${instance.url}</a>
+                                        </li>
+                                    </#list>
+                                </ul>
                             </td>
                         </tr>
                         </#list>

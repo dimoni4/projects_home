@@ -23,7 +23,6 @@
                     <tr>
                         <th data-field="name">Name</th>
                         <th data-field="instances">Instances</th>
-                        <th data-field="services">Services</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,6 +31,13 @@
                             <td>
                                 <a href="/project/${project.id}"
                                    class="waves-effect waves-teal">${project.name}</a>
+                                <p>
+                                    <#list project.services as service>
+                                        <a href="${service.url}">
+                                            <img class="serviceLogo" src="<@c.url value="/resources/img/service/${service.type}.png"/>"/>
+                                        </a>
+                                    </#list>
+                                </p>
                             </td>
                             <td>
                                 <#list project.instances as instance>
@@ -48,13 +54,6 @@
                                             <a href="${instance.url}">${instance.url}</a>
                                             <a href="<@c.url value='/project/${project.id}/instance/${instance.id}/edit' />"><i class="fa fa-fw fa-pencil"></i></a>
                                         </div>
-                                </#list>
-                            </td>
-                            <td>
-                                <#list project.services as service>
-                                    <a href="${service.url}">
-                                        <img class="serviceLogo" src="<@c.url value="/resources/img/service/${service.type}.png"/>"/>
-                                    </a>
                                 </#list>
                             </td>
                         </tr>

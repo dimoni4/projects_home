@@ -23,13 +23,6 @@ public class IndexController {
 	@Autowired
 	ProjectRepository projectRepository;
 
-	@RequestMapping(value = {"/project/all"})
-	protected ModelAndView indexPage() throws Exception {
-		ModelAndView model = new ModelAndView("project/all");
-		model.addObject("user", userRepository.getUser(userSession.getUserId()));
-		model.addObject("projects", projectRepository.getAllProjects());
-		return model;
-	}
 
 	@RequestMapping(value = {"/"})
 	protected ModelAndView index(Principal principal) throws Exception {

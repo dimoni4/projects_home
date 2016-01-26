@@ -39,7 +39,7 @@
                 <div class="col-sm-3">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="type" id="typeTest" value="TEST">
+                            <input type="radio" name="type" id="typeTest" value="TEST" checked>
                             TEST
                         </label>
                     </div>
@@ -60,6 +60,34 @@
             <div class="form-group">
                 <label for="description" class="col-sm-3 control-label">Instance description</label>
                 <input id="description" type="text" name="description" class="validate col-sm-3">
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="checkCreteria.checkType">Check type</label>
+
+                <div class="col-sm-3">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="checkCreteria.checkType" id="typeWord" value="NONE" checked>
+                            None
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="checkCreteria.checkType" id="typeWord" value="SEARCH_WORD">
+                            Search for word
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="checkCreteria.checkType" id="typeResponseCode" value="HTTP_RESPONSE_CODE">
+                            Response code
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="checkWord" class="col-sm-3 control-label">Check value</label>
+                <input id="checkCreteria.checkWord" type="text" name="checkCreteria.checkWord" class="validate col-sm-3">
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-3">

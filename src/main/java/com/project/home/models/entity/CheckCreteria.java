@@ -5,13 +5,13 @@ package com.project.home.models.entity;
  */
 public class CheckCreteria {
     private String checkWord;
-    private Type chekType;
+    private Type checkType;
 
     public CheckCreteria() {
     }
 
     public CheckCreteria(Type type, String checkWord) {
-        this.chekType = type;
+        this.checkType = type;
         this.checkWord = checkWord;
     }
 
@@ -20,11 +20,11 @@ public class CheckCreteria {
     }
 
     public Type getType() {
-        return chekType;
+        return checkType;
     }
 
     public static enum Type {
-        SEARCH_WORD, HTTP_RESPONSE_CODE;
+        NONE, SEARCH_WORD, HTTP_RESPONSE_CODE
     }
 }
 
